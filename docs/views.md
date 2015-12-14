@@ -6,21 +6,21 @@
 ## New Session
 ![new-session]
 
-## NotesIndex / NoteIndexItem / NoteForm
-![notes]
+## AlbumsIndex / AlbumIndexItem
+![albums]
 
-## NotebooksIndex / NotebookIndexItem
-![notebooks]
+## SongsIndex / SongIndexItem / CommentsIndex
+![songs]
 
-## NoteBookForm
-![notebook-form]
+## AlbumForm / SongForm
+![album-form]
 
 ## Component Heirarchy
 ![component-heirarchy]
 
 [new-user]: ./wireframes/new_user.png
 [new-session]: ./wireframes/new_session.png
-[notes]: ./wireframes/root_notes.png
-[notebooks]: ./wireframes/root_notebooks.png
-[notebook-form]: ./wireframes/notebook_form.png
+[albums]: ./wireframes/root_notes.png
+[songs]: ./wireframes/root_notebooks.png
+[album-form]: ./wireframes/notebook_form.png
 [component-heirarchy]: ./wireframes/component_heirarchy.png

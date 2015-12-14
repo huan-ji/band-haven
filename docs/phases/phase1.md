@@ -1,20 +1,24 @@
-# Phase 1: User Authentication, Note Model and JSON API
+# Phase 1: User Authentication, Album and Song Model and JSON API (2 Days)
 
 ## Rails
 ### Models
 * User
-* Note
+* Album
+* Song
 
 ### Controllers
 * UsersController (create, new)
 * SessionsController (create, new, destroy)
-* Api::NotesController (create, destroy, index, show, update)
+* Api::AlbumsController (create, destroy, index, show, update)]
+* Api::SongsController (create, destroy, index, show, update)
 
 ### Views
 * users/new.html.erb
 * session/new.html.erb
-* notes/index.json.jbuilder
-* notes/show.json.jbuilder
+* albums/index.json.jbuilder
+* albums/show.json.jbuilder
+* albums/songs/index.json.jbuilder
+* albums/songs/show.json.jbuilder
 
 ## Flux
 ### Views (React Components)

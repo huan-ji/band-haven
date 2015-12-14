@@ -1,4 +1,4 @@
-# Phase 2: Flux Architecture and Note CRUD (2 days)
+# Phase 2: Flux Architecture and Note CRUD (2.0 days)
 
 ## Rails
 ### Models
@@ -9,30 +9,49 @@
 
 ## Flux
 ### Views (React Components)
-* NotesIndex
-  - NotesIndexItem
-* NoteForm
+* AlbumsIndex
+  - AlbumIndexItem
+* AlbumForm
+* SongsIndex
+  - SongIndexItem
+* SongForm
 
 ### Stores
-* Note
+* Album
+* Song
 
 ### Actions
-* ApiActions.receiveAllNotes -> triggered by ApiUtil
-* ApiActions.receiveSingleNote
-* ApiActions.deleteNote
-* NoteActions.fetchAllNotes -> triggers ApiUtil
-* NoteActions.fetchSingleNote 
-* NoteActions.createNote
-* NoteActions.editNote 
-* NoteActions.destroyNote
+* ApiActions.receiveAllAlbums -> triggered by ApiUtil
+* ApiActions.receiveSingleAlbum
+* ApiActions.deleteAlbum
+* AlbumActions.fetchAllAlbums -> triggers ApiUtil
+* AlbumActions.fetchSingleAlbum
+* AlbumActions.createAlbum
+* AlbumActions.editAlbum
+* AlbumActions.destroyAlbum
+* ApiActions.receiveAllSongs -> triggered by ApiUtil
+* ApiActions.receiveSingleSong
+* ApiActions.deleteSong
+* SongActions.fetchAllSongs -> triggers ApiUtil
+* SongActions.fetchSingleSong
+* SongActions.createSong
+* SongActions.editSong
+* SongActions.destroySong
 
 ### ApiUtil
-* ApiUtil.fetchAllNotes
-* ApiUtil.fetchSingleNote
-* ApiUtil.createNote
-* ApiUtil.editNote
-* ApiUtil.destroyNote
+* ApiUtil.fetchAllAlbums
+* ApiUtil.fetchSingleAlbum
+* ApiUtil.createAlbum
+* ApiUtil.editAlbum
+* ApiUtil.destroyAlbum
+* ApiUtil.fetchAllSongs
+* ApiUtil.fetchSingleSong
+* ApiUtil.createSong
+* ApiUtil.editSong
+* ApiUtil.destroySong
 
 ## Gems/Libraries
 * Flux Dispatcher (npm)
-* Twitter Bootstrap
+* Babel (npm)
+* Flux Store (npm)
+* Jquery-rails
