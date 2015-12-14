@@ -1,4 +1,4 @@
-# BandCamp
+# BandHaven
 
 [Heroku link][heroku]
 
@@ -7,7 +7,7 @@
 ## Minimum Viable Product
 
 BandHaven is a web application inspired by BandCamp built using Ruby on Rails
-and React.js. BandCamp allows users to:
+and React.js. BandHaven allows users to:
 
 
 - [ ] Create a fan account or an artist account
