@@ -1,7 +1,5 @@
 var AuthConstants = {
   MESSAGES_RECEIVED: "MESSAGES_RECEIVED",
-  REMOVE_BENCHES: "REMOVE_BENCHES",
-  BENCH_RECEIVED: "BENCH_RECEIVED"
 };
 
 module.exports = AuthConstants;

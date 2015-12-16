@@ -1,6 +1,7 @@
 var React = require('react');
 var Auth = require('./auth/auth_comp');
 var ApiUtil = require('../util/api_util');
+var AlbumIndex = require('./albums/album_index');
 
 var FrontPage = React.createClass({
   getInitialState: function () {
@@ -41,11 +42,11 @@ var FrontPage = React.createClass({
         </div>
       )
     }
-
     return (
       <div>
         {buttons}
         {modal}
+        <AlbumIndex/>
       </div>
     )
   }

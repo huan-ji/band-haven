@@ -1,3 +1,4 @@
+var AlbumConstants = require('../constants/album_constants');
 var AuthConstants = require('../constants/auth_constants');
 var AppDispatcher = require('../dispatcher/dispatcher');
 
@@ -9,6 +10,13 @@ var ApiActions = {
       messages: messages
     });
   },
+
+  receiveAlbums: function (albums) {
+    AppDispatcher.dispatch({
+      actionType: AlbumConstants.ALBUMS_RECEIVED,
+      albums: albums
+    });
+  }
 };
 
 module.exports = ApiActions;

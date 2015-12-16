@@ -1,9 +1,9 @@
 var ApiAction = require('../actions/api_actions.js');
 
 var ApiUtil = {
-  fetchBenches: function (filters) {
-    $.get("api/benches", { "bounds": filters }, function(benches) {
-      ApiAction.receiveAll(benches);
+  fetchAllAlbums: function () {
+    $.get("api/albums", {}, function(albums) {
+      ApiAction.receiveAlbums(albums);
     });
   },
 

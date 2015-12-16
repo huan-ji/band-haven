@@ -15,12 +15,6 @@ AuthStore.__onDispatch = function (payload) {
       // debugger;
       resetMessages(payload.messages);
       break;
-    case BenchConstants.REMOVE_BENCHES:
-      removeBenches();
-      break;
-    case BenchConstants.BENCH_RECEIVED:
-      receiveBench(payload.bench);
-      break;
   }
 };
 
