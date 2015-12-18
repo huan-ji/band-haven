@@ -1,0 +1,7 @@
+var FilterConstants = {
+  GENRES_RECEIVED: "GENRES_RECEIVED",
+  SUBGENRES_RECEIVED: "SUBGENRES_RECEIVED",
+  LOCATIONS_RECEIVED: "LOCATIONS_RECEIVED"
+};
+
+module.exports = FilterConstants;

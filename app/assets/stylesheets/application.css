@@ -32,3 +32,120 @@
   margin: 10px;
   transition: all 1s ease;
 }
+
+.filter-row {
+  display: block;
+  /*background-color: red;*/
+  margin: 0;
+  height: 40px;
+}
+
+.filter-item {
+  display: inline-block;
+  color: white;
+  margin: 5px 2px 5px 2px;
+  background-color: transparent;
+  transition: background-color 0.5s;
+  border-radius: 15px;
+  padding: 6px 10px 6px 10px;
+  cursor:pointer;
+}
+
+.filter-item:hover {
+  background-color: black;
+}
+
+.discover {
+  background-color: #EEE;
+}
+
+.selected-filter {
+  background-color: black;
+}
+
+.filter-transition-enter {
+  visibility: hidden;
+  height: 0px;
+}
+
+.filter-transition-enter.filter-transition-enter-active {
+  visibility: visible;
+
+  height: 40px;
+  /*transition: all 200ms;*/
+}
+
+.filter-transition-leave {
+  visibility: visible;
+  text-indent: 100%;
+  height: 40px;
+}
+
+.filter-transition-leave.filter-transition-leave-active {
+  visibility: hidden;
+  height: 0px;
+}
+
+.album-transition-appear {
+  /*visibility: hidden;*/
+  /*transform: translate(0px, -40px);*/
+  /*display: none;*/
+  /*height: 0px;*/
+  opacity: 0.01;
+}
+
+.album-transition-appear.album-transition-appear-active {
+  /*visibility: visible;*/
+  opacity: 1;
+  /*display: inline-block;*/
+  /*height: 40px;*/
+  /*transform: translate(0px, 0px);*/
+  transition: all 600ms;
+}
+
+.album-detail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000px;
+  background-color: lightblue;
+}
+
+.album-detail-transition-appear {
+  transform: translate3d(100%, 0, 0);
+}
+
+.album-detail-transition-appear.album-detail-transition-appear-active {
+  transform: translate3d(0, 0, 0);
+  transition: all 600ms;
+}
+
+.fade-appear {
+  opacity: 0.01;
+}
+
+.fade-appear.fade-appear-active {
+  opacity: 1;
+  transition: all 600ms;
+}
+
+.fade-enter {
+  opacity: 0.01;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: all 600ms;
+}
+
+.fade-leave {
+  opacity: 1;
+  height: 40px;
+}
+
+.fade-leave.fade-leave-active {
+  opacity: 0.01;
+  height: 0px;
+}

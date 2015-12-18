@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151215232027) do
+ActiveRecord::Schema.define(version: 20151216172854) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,38 @@ ActiveRecord::Schema.define(version: 20151215232027) do
   add_index "comments", ["album_id"], name: "index_comments_on_album_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
+  create_table "genre_joins", force: :cascade do |t|
+    t.integer  "album_id",   null: false
+    t.integer  "genre_id",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "genre_joins", ["album_id"], name: "index_genre_joins_on_album_id", using: :btree
+  add_index "genre_joins", ["genre_id"], name: "index_genre_joins_on_genre_id", using: :btree
+
+  create_table "genres", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "location_joins", force: :cascade do |t|
+    t.integer  "album_id",    null: false
+    t.integer  "location_id", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "location_joins", ["album_id"], name: "index_location_joins_on_album_id", using: :btree
+  add_index "location_joins", ["location_id"], name: "index_location_joins_on_location_id", using: :btree
+
+  create_table "locations", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "songs", force: :cascade do |t|
     t.integer  "album_id",                   null: false
     t.string   "title",                      null: false
@@ -51,6 +83,25 @@ ActiveRecord::Schema.define(version: 20151215232027) do
   end
 
   add_index "songs", ["album_id"], name: "index_songs_on_album_id", using: :btree
+
+  create_table "sub_genre_joins", force: :cascade do |t|
+    t.integer  "album_id",     null: false
+    t.integer  "sub_genre_id", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "sub_genre_joins", ["album_id"], name: "index_sub_genre_joins_on_album_id", using: :btree
+  add_index "sub_genre_joins", ["sub_genre_id"], name: "index_sub_genre_joins_on_sub_genre_id", using: :btree
+
+  create_table "sub_genres", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.integer  "genre_id",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "sub_genres", ["genre_id"], name: "index_sub_genres_on_genre_id", using: :btree
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "album_id",   null: false

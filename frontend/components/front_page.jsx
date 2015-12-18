@@ -2,8 +2,11 @@ var React = require('react');
 var Auth = require('./auth/auth_comp');
 var ApiUtil = require('../util/api_util');
 var AlbumIndex = require('./albums/album_index');
+var FilterArea = require('./filters/filter_area');
+var History = require('react-router').History;
 
 var FrontPage = React.createClass({
+  mixins: [History],
   getInitialState: function () {
     return {
       auth: false,
@@ -23,6 +26,10 @@ var FrontPage = React.createClass({
   handleLogOut: function () {
     ApiUtil.signOutUser();
     this.setState({ loggedIn: false })
+  },
+
+  handleSlide: function () {
+    this.history.push("/albums")
   },
 
   render: function () {
@@ -46,7 +53,11 @@ var FrontPage = React.createClass({
       <div>
         {buttons}
         {modal}
-        <AlbumIndex/>
+        <div className="discover">
+          <FilterArea/>
+          <AlbumIndex/>
+        </div>
+        <button onClick={this.handleSlide}>Slide test</button>
       </div>
     )
   }

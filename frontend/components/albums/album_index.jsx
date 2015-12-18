@@ -2,6 +2,7 @@ var React = require('react');
 var AlbumIndexItem = require('./album_index_item');
 var AlbumStore = require('../../stores/album');
 var ApiUtil = require('../../util/api_util');
+var ReactCSS = require('react-addons-css-transition-group');
 
 var AlbumIndex = React.createClass({
   getInitialState: function () {
@@ -13,7 +14,12 @@ var AlbumIndex = React.createClass({
   componentDidMount: function () {
     // debugger;
     this.albumListener = AlbumStore.addListener(this.onChange);
-    ApiUtil.fetchAllAlbums();
+    var filterObj = {
+      genre: "all",
+      sub_genre: "all",
+      location: "all"
+    };
+    ApiUtil.fetchFilteredAlbums(filterObj);
   },
 
   componentWillUnmount: function () {
@@ -30,13 +36,17 @@ var AlbumIndex = React.createClass({
     var albums;
     if (this.state.albums.length > 0) {
       albums = this.state.albums.map(function (album, key) {
-        return <AlbumIndexItem key={key} album={album}/>
+        return (
+          <ReactCSS key={Math.random()} transitionName="album-transition"
+            transitionAppear={true} transitionAppearTimeout={600}
+            transitionEnterTimeout={600} transitionLeaveTimeout={600}>
+            <AlbumIndexItem album={album}/>
+          </ReactCSS>
+        )
       })
     }
     return (
-      <ul className="front-page-albums">
-        {albums}
-      </ul>
+        <ul className="front-page-albums">{albums}</ul>
     );
   }
 });

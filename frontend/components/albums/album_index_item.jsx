@@ -1,4 +1,5 @@
 var React = require('react');
+var ReactCSS = require('react-addons-css-transition-group');
 
 var AlbumIndexItem = React.createClass({
   render: function () {

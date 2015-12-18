@@ -1,10 +1,11 @@
 var Store = require('flux/utils').Store;
 var AppDispatcher = require('../dispatcher/dispatcher');
-var _albums = [];
+var _albums = {};
 var AlbumStore = new Store(AppDispatcher);
 var AlbumConstants = require('../constants/album_constants');
 
 var resetAlbums = function (albums) {
+  _albums = {};
   albums.forEach(function (album) {
     _albums[album.id] = album;
   })

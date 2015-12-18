@@ -14,7 +14,11 @@ var Auth = React.createClass({
   },
 
   componentDidMount: function () {
-    AuthStore.addListener(this._onChange);
+    this.authListener = AuthStore.addListener(this._onChange);
+  },
+
+  componentWillUnmount: function () {
+    this.authListener.remove();
   },
 
   _onChange: function () {
