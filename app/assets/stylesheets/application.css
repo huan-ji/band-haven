@@ -1,3 +1,8 @@
+/*
+  *= require audio_player.css
+  *= require_tree.
+*/
+
 .modal-screen {
   z-index: 998;
   position: absolute;
@@ -25,17 +30,42 @@
 
 .front-page-albums {
   display: inline-flex;
-  transition: all 1s ease;
+  flex-wrap: wrap;
+  max-width: 70%;
 }
 
 .front-page-albums div {
   margin: 10px;
-  transition: all 1s ease;
 }
+
+.current-album {
+  background-color: white;
+  float: right;
+  position: relative;
+  top: 30px;
+  right: 30px;
+  padding: 30px;
+  display: inline-block;
+}
+
+.current-album-img {
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.album-index-img {
+  flex-basis: 25%;
+  max-width: 90%;
+  height: auto;
+  width: auto;
+  cursor: pointer;
+}
+
+
 
 .filter-row {
   display: block;
-  /*background-color: red;*/
   margin: 0;
   height: 40px;
 }
@@ -57,6 +87,7 @@
 
 .discover {
   background-color: #EEE;
+  height: 700px;
 }
 
 .selected-filter {
@@ -97,6 +128,7 @@
   transition: all 600ms;
 }
 
+
 .album-detail {
   position: absolute;
   top: 0;
@@ -104,7 +136,7 @@
   width: 100%;
   height: 100%;
   z-index: 100000000px;
-  background-color: lightblue;
+  background-color: white;
 }
 
 .reversePageSwap-leave {

@@ -39,6 +39,13 @@ var ApiActions = {
       locations: locations
     });
   },
+
+  selectAlbum: function (album) {
+    AppDispatcher.dispatch({
+      actionType: AlbumConstants.ALBUM_SELECTED,
+      album: album
+    });
+  }
 };
 
 module.exports = ApiActions;

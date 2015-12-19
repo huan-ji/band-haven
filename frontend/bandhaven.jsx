@@ -36,7 +36,7 @@ var App = React.createClass({
 var routes = (
   <Route path="/" component={App}>
     <IndexRoute component={MockIndex}/>
-    <Route path="albums" component={AlbumDetail}/>
+    <Route path="albums/:albumId" component={AlbumDetail}/>
   </Route>
 );
 

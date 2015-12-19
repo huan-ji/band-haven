@@ -8,9 +8,6 @@ var AlbumDetail = React.createClass({
     this.history.push("/")
   },
 
-      // <ReactCSS key={Math.random()} transitionName="album-detail-transition"
-      //   transitionAppear={true} transitionAppearTimeout={600}
-      //   transitionEnterTimeout={600} transitionLeaveTimeout={600}>
   render: function () {
     return (
         <div className="album-detail">
@@ -20,6 +17,5 @@ var AlbumDetail = React.createClass({
     )
   }
 });
-      // </ReactCSS>
 
 module.exports = AlbumDetail;

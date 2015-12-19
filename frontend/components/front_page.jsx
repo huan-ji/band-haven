@@ -4,6 +4,7 @@ var ApiUtil = require('../util/api_util');
 var AlbumIndex = require('./albums/album_index');
 var FilterArea = require('./filters/filter_area');
 var History = require('react-router').History;
+var AlbumDiscovery = require('./albums/album_discovery');
 
 var FrontPage = React.createClass({
   mixins: [History],
@@ -55,7 +56,7 @@ var FrontPage = React.createClass({
         {modal}
         <div className="discover">
           <FilterArea/>
-          <AlbumIndex/>
+          <AlbumDiscovery/>
         </div>
         <button onClick={this.handleSlide}>Slide test</button>
       </div>
