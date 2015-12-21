@@ -7,7 +7,7 @@ var AlbumDetail = React.createClass({
   mixins: [History],
   getInitialState: function () {
     return {
-      album: AlbumStore.selectedAlbum
+      album: AlbumStore.selectedAlbum()
     }
   },
 
@@ -16,6 +16,7 @@ var AlbumDetail = React.createClass({
   },
 
   render: function () {
+    var album = this.state.album;
     return (
         <div className="album-detail">
           <button onClick={this.handleSlideBack}>Slide Back</button>
