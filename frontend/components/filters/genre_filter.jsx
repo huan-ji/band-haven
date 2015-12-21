@@ -58,7 +58,7 @@ var GenreFilter = React.createClass({
     }
 
     return (
-        <ReactCSS transitionName="filter-transition" transitionEnter={true} transitionEnterTimeout={500} transitionLeaveTimeout={500}>
+        <ReactCSS transitionName="filter-transition" transitionEnterTimeout={500} transitionLeaveTimeout={500}>
           { content }
         </ReactCSS>
     );

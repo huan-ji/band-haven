@@ -3,6 +3,7 @@ var AlbumIndexItem = require('./album_index_item');
 var AlbumStore = require('../../stores/album');
 var ApiUtil = require('../../util/api_util');
 var ReactCSS = require('react-addons-css-transition-group');
+var ApiActions = require('../../actions/api_actions');
 
 var AlbumIndex = React.createClass({
   getInitialState: function () {
@@ -37,11 +38,7 @@ var AlbumIndex = React.createClass({
     if (this.state.albums.length > 0) {
       albums = this.state.albums.map(function (album, key) {
         return (
-          <ReactCSS key={Math.random()} transitionName="album-transition"
-            transitionAppear={true} transitionAppearTimeout={600}
-            transitionEnterTimeout={600} transitionLeaveTimeout={600}>
-            <AlbumIndexItem album={album}/>
-          </ReactCSS>
+            <AlbumIndexItem key={key} album={album}/>
         )
       })
     }

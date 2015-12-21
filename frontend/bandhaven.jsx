@@ -12,19 +12,14 @@ var MockIndex = require('./components/index_route');
 
 var App = React.createClass({
   render: function () {
-    // debugger;
     var path = this.props.location.pathname;
-    var segment = path.split('/')[1] || 'root';
-    // debugger;
-    var that = this;
     return (
       <div>
         <header><h1>BandHaven</h1></header>
         <FrontPage/>
-        <ReactCSS component='div' transitionName={segment === 'root' ? 'reversePageSwap' : 'pageSwap'}
-          transitionAppearTimeout={600}
+        <ReactCSS component='div' transitionName="pageSwap"
           transitionEnterTimeout={600} transitionLeaveTimeout={600}>
-            {React.cloneElement(that.props.children, { key: segment })}
+            {React.cloneElement(this.props.children, { key: path })}
         </ReactCSS>
       </div>
     );
