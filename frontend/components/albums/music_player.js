@@ -111,6 +111,7 @@ function moveplayhead(e) {
 function timeUpdate() {
 	var playPercent = Player.timelineWidth * (Player.music.currentTime / Player.duration);
 	Player.playhead.style.marginLeft = playPercent + "px";
+
 	if (Player.music.currentTime == Player.duration) {
 		pButton.className = "";
 		pButton.className = "play";

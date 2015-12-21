@@ -15,7 +15,5 @@ class Song < ActiveRecord::Base
 
   belongs_to :album
 
-  belongs_to :artist, through: :album, source: :artist
-
-  belongs_to :fan, through: :album, source: :fan
+  has_one :artist, through: :album, source: :artist
 end

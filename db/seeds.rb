@@ -59,3 +59,87 @@ LocationJoin.create(album_id: 3, location_id: 2)
 LocationJoin.create(album_id: 4, location_id: 2)
 LocationJoin.create(album_id: 5, location_id: 3)
 LocationJoin.create(album_id: 6, location_id: 4)
+Song.create(title: "Promise [Part 2]", lyrics: "Over and gone,
+She waited.
+
+(He would travel far to find her,
+Finally she breathed her answer…)
+
+Over and gone
+A promise kept is all that's left.
+Nothing changes.
+
+Over and on,
+over and gone, she…
+over and on
+over and gone… ", album_id: 1, duration: "8:53", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
+Song.create(title: "Unturning", lyrics: "Over and gone,
+She waited.
+
+(He would travel far to find her,
+Finally she breathed her answer…)
+
+Over and gone
+A promise kept is all that's left.
+Nothing changes.
+
+Over and on,
+over and gone, she…
+over and on
+over and gone… ", album_id: 1, duration: "08:53", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
+Song.create(title: "Instinc", lyrics: "", album_id: 1, duration: "08:25", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
+Song.create(title: "Womb (In Memoriam)", lyrics: "", album_id: 1, duration: "07:00", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
+Song.create(title: "Selfsame", lyrics: "", album_id: 1, duration: "02:26", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
+Song.create(title: "Holding Atropos", lyrics: "", album_id: 1, duration: "08:24", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
+Song.create(title: "Keeping Stone: Sound on Fire", lyrics: "", album_id: 1, duration: "04:09", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
+Song.create(title: "Learned", lyrics: "", album_id: 1, duration: "09:22", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
+Song.create(title: "Hunter, Heart & Home", lyrics: "", album_id: 1, duration: "23:15", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
+Song.create(title: "Little Burden", lyrics: "", album_id: 1, duration: "07:46", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
+Song.create(title: "Impatience and Slow Poison", lyrics: "", album_id: 1, duration: "07:46", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
+Song.create(title: "Known", lyrics: "", album_id: 1, duration: "07:02", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
+Song.create(title: "Nightingale's Weave", lyrics: "", album_id: 1, duration: "02:50", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
+Song.create(title: "Eyes for the Change", lyrics: "", album_id: 1, duration: "08:31", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
+Song.create(title: "Keeping Stone: Water Awake", lyrics: "", album_id: 1, duration: "06:19", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
+Song.create(title: "Promise [Part 1]", lyrics: "", album_id: 1, duration: "07:34", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
+Song.create(title: "Promise [Part 2]", lyrics: "Over and gone,
+She waited.
+
+(He would travel far to find her,
+Finally she breathed her answer…)
+
+Over and gone
+A promise kept is all that's left.
+Nothing changes.
+
+Over and on,
+over and gone, she…
+over and on
+over and gone… ", album_id: 2, duration: "8:53", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
+Song.create(title: "Unturning", lyrics: "Over and gone,
+She waited.
+
+(He would travel far to find her,
+Finally she breathed her answer…)
+
+Over and gone
+A promise kept is all that's left.
+Nothing changes.
+
+Over and on,
+over and gone, she…
+over and on
+over and gone… ", album_id: 2, duration: "08:53", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
+Song.create(title: "Instinc", lyrics: "", album_id: 2, duration: "08:25", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
+Song.create(title: "Womb (In Memoriam)", lyrics: "", album_id: 2, duration: "07:00", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
+Song.create(title: "Selfsame", lyrics: "", album_id: 2, duration: "02:26", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
+Song.create(title: "Holding Atropos", lyrics: "", album_id: 2, duration: "08:24", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
+Song.create(title: "Keeping Stone: Sound on Fire", lyrics: "", album_id: 2, duration: "04:09", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
+Song.create(title: "Learned", lyrics: "", album_id: 2, duration: "09:22", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
+Song.create(title: "Hunter, Heart & Home", lyrics: "", album_id: 2, duration: "23:15", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
+Song.create(title: "Little Burden", lyrics: "", album_id: 2, duration: "07:46", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
+Song.create(title: "Impatience and Slow Poison", lyrics: "", album_id: 2, duration: "07:46", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
+Song.create(title: "Known", lyrics: "", album_id: 2, duration: "07:02", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
+Song.create(title: "Nightingale's Weave", lyrics: "", album_id: 2, duration: "02:50", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
+Song.create(title: "Eyes for the Change", lyrics: "", album_id: 2, duration: "08:31", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
+Song.create(title: "Keeping Stone: Water Awake", lyrics: "", album_id: 2, duration: "06:19", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
+Song.create(title: "Promise [Part 1]", lyrics: "", album_id: 2, duration: "07:34", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)

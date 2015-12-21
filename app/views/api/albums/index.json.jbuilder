@@ -4,4 +4,5 @@ json.array! @albums do |album|
   json.description album.description
   json.artist album.artist
   json.cover_image album.cover_image
+  json.songs album.songs
 end
