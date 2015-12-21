@@ -18,11 +18,11 @@ var AlbumDetail = React.createClass({
   render: function () {
     var album = this.state.album;
     return (
-        <div className="album-detail">
-          <button onClick={this.handleSlideBack}>Slide Back</button>
-          <h3>{album.title} Page</h3>
-          <h4>By artist {album.artist.username}</h4>
-        </div>
+      <div className="album-detail">
+        <button onClick={this.handleSlideBack}>Slide Back</button>
+        <h3>{album.title} Page</h3>
+        <h4>By artist {album.artist.username}</h4>
+      </div>
     )
   }
 });
