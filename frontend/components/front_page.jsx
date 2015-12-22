@@ -50,15 +50,16 @@ var FrontPage = React.createClass({
         </div>
       )
     }
+          // <img className="weekly-img" src="http://res.cloudinary.com/dzqfe9334/image/upload/v1450813093/0006428130_0_h0wikv.jpg"></img>
     return (
       <div>
-        {buttons}
+        <div className="weekly">
+        </div>
         {modal}
         <div className="discover">
           <FilterArea/>
           <AlbumDiscovery/>
         </div>
-        <button onClick={this.handleSlide}>Slide test</button>
       </div>
     )
   }

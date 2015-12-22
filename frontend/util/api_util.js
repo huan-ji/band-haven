@@ -8,7 +8,9 @@ var ApiUtil = {
   },
 
   fetchFilteredAlbums: function (filters) {
+    // debugger;
     $.get("api/albums", { filters: filters }, function(albums) {
+      // debugger;
       ApiAction.receiveAlbums(albums);
     });
   },

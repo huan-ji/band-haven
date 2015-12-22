@@ -2,19 +2,44 @@ var Store = require('flux/utils').Store;
 var AppDispatcher = require('../dispatcher/dispatcher');
 var _albums = {};
 var _selectedAlbum = null;
+var _selectedSong = { song: "", playing: false};
 var AlbumStore = new Store(AppDispatcher);
 var AlbumConstants = require('../constants/album_constants');
 
 var resetAlbums = function (albums) {
+
   _albums = {};
   albums.forEach(function (album) {
     _albums[album.id] = album;
   })
+  // debugger;
   AlbumStore.__emitChange();
 }
 
 var selectAlbum = function (album) {
   _selectedAlbum = album;
+  var song = album.songs[0];
+  if (_selectedSong.song === song) {
+    _selectedSong.playing = !_selectedSong.playing;
+  } else {
+    _selectedSong.song = song;
+    _selectedSong.playing = true;
+  }
+  AlbumStore.__emitChange();
+}
+
+var selectSong = function (song) {
+  if (_selectedSong.song === song) {
+    _selectedSong.playing = !_selectedSong.playing;
+  } else {
+    _selectedSong.song = song;
+    _selectedSong.playing = true;
+  }
+  AlbumStore.__emitChange();
+}
+
+var playSwitch = function (playing) {
+  _selectedSong.playing = playing;
   AlbumStore.__emitChange();
 }
 
@@ -29,8 +54,16 @@ AlbumStore.__onDispatch = function (payload) {
     case AlbumConstants.ALBUM_SELECTED:
       selectAlbum(payload.album);
       break;
+    case AlbumConstants.SONG_SELECTED:
+      selectSong(payload.song);
+      break;
+    case AlbumConstants.PLAY_SWITCHED:
+      playSwitch(payload.playing);
+      break;
   }
 };
+
+
 
 AlbumStore.all = function () {
   var returnAlbums = [];
@@ -44,6 +77,10 @@ AlbumStore.all = function () {
 
 AlbumStore.selectedAlbum = function () {
   return _selectedAlbum;
+}
+
+AlbumStore.selectedSong = function () {
+  return _selectedSong;
 }
 
 

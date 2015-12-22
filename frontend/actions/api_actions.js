@@ -45,6 +45,21 @@ var ApiActions = {
       actionType: AlbumConstants.ALBUM_SELECTED,
       album: album
     });
+  },
+
+  selectSong: function (song) {
+    // debugger;
+    AppDispatcher.dispatch({
+      actionType: AlbumConstants.SONG_SELECTED,
+      song: song
+    });
+  },
+
+  playSwitch: function (playing) {
+    AppDispatcher.dispatch({
+      actionType: AlbumConstants.PLAY_SWITCHED,
+      playing: playing
+    });
   }
 };
 

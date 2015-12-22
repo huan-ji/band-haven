@@ -9,18 +9,22 @@ var ReactCSS = require('react-addons-css-transition-group');
 var RouteHandler = require('react-router').RouteHandler;
 var TransitionGroup = require('react-addons-transition-group')
 var MockIndex = require('./components/index_route');
+var NavBar = require('./nav-bar');
+var CurrentAlbum = require('./components/albums/current_album');
 
 var App = React.createClass({
   render: function () {
     var path = this.props.location.pathname;
+    var segment = path.split('/')[1] || 'root';
+
     return (
       <div>
-        <header><h1>BandHaven</h1></header>
-        <FrontPage/>
-        <ReactCSS component='div' transitionName="pageSwap"
+        <NavBar/>
+        <ReactCSS component='div' transitionName={segment === 'root' ? 'reversePageSwap' : 'pageSwap'}
           transitionEnterTimeout={600} transitionLeaveTimeout={600}>
             {React.cloneElement(this.props.children, { key: path })}
         </ReactCSS>
+        <CurrentAlbum/>
       </div>
     );
   },
@@ -30,7 +34,7 @@ var App = React.createClass({
     // <IndexRoute component={FrontPage}/>
 var routes = (
   <Route path="/" component={App}>
-    <IndexRoute component={MockIndex}/>
+    <IndexRoute component={FrontPage}/>
     <Route path="albums/:albumId" component={AlbumDetail}/>
   </Route>
 );

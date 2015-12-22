@@ -20,6 +20,7 @@ var AlbumIndex = React.createClass({
       sub_genre: "all",
       location: "all"
     };
+    // debugger;
     ApiUtil.fetchFilteredAlbums(filterObj);
   },
 
@@ -30,7 +31,6 @@ var AlbumIndex = React.createClass({
   onChange: function () {
     // debugger;
     this.setState({ albums: AlbumStore.all() });
-
   },
 
   render: function () {
@@ -42,6 +42,7 @@ var AlbumIndex = React.createClass({
         )
       })
     }
+    // debugger;
     return (
         <ul className="front-page-albums">{albums}</ul>
     );

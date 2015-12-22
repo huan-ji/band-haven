@@ -1,17 +1,16 @@
+var AlbumStore = require('../../stores/album');
+var ApiActions = require('../../actions/api_actions');
+
 var Player = {
-	//Play and Pause
 	play: function () {
-		// start music
-		if (this.music.paused) {
+		// debugger;
+		var playing = AlbumStore.selectedSong().playing;
+		if (this.music.paused && playing) {
 			this.music.play();
-			// remove play, add pause
-			this.pButton.className = "";
-			this.pButton.className = "pause";
-		} else { // pause music
+
+		} else if (!this.music.paused && !playing) {
 			this.music.pause();
-			// remove pause, add play
-			this.pButton.className = "";
-			this.pButton.className = "play";
+
 		}
 
 		var that = this;
@@ -115,6 +114,7 @@ function timeUpdate() {
 	if (Player.music.currentTime == Player.duration) {
 		pButton.className = "";
 		pButton.className = "play";
+		ApiActions.playSwitch(false);
 	}
 }
 
