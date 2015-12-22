@@ -12,6 +12,7 @@ SubGenre.delete_all
 SubGenreJoin.delete_all
 Location.delete_all
 LocationJoin.delete_all
+User.create(username:"kkiiji", password_digest:"$2a$10$j0PwrAMIh1XlhcqWNVJM4eb3e0hq2Tk.ExduGOw.RFUfRiCdqAqYq", session_token:"AsN17N4TUqyikz2ESMLFfA", artist: false)
 Album.create(title: "PINK GUY", artist_id: 1, description: "test album 1", cover_image: "https://f1.bcbits.com/img/a0984029365_9.jpg")
 Album.create(title: "Damn Near Grown", artist_id: 1, description: "test album 2", cover_image: "https://f1.bcbits.com/img/a0690813671_9.jpg")
 Album.create(title: "THIRD SIDE OF TAPE", artist_id: 1, description: "test album 3", cover_image: "https://f1.bcbits.com/img/a0812955947_9.jpg")
