@@ -40,8 +40,9 @@ var Player = {
 
 		window.addEventListener('mouseup', mouseUp, false);
 		this.music.addEventListener("timeupdate", timeUpdate, false);
-
+		
 		if (document.getElementById('pButton2')) {
+			// debugger;
 			this.pButton2 = document.getElementById('pButton2');
 			this.playhead2 = document.getElementById('playhead2');
 			this.timeline2 = document.getElementById('timeline2');

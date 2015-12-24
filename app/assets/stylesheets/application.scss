@@ -11,10 +11,6 @@
 //   transition: height 0.5s;
 // }
 
-.navbar-disappear {
-  height: 0px;
-}
-
 body {
   margin-top: 0px;
 }
@@ -22,7 +18,14 @@ body {
 #navbar {
   background-color: white;
   opacity: 0.7;
-  // height: 100px;
+  z-index: 100;
+  transition: all 0.5s;
+}
+
+#navbar-closed {
+  z-index: -100;
+  opacity: 0.01;
+  transition: all 0.5s;
 }
 
 .weekly {

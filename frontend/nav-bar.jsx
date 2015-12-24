@@ -10,15 +10,22 @@ var Scroll = require('react-scroll');
 var ScrollLink = Scroll.Link;
 var Element = Scroll.Element;
 var OnScroll = require("react-window-mixins").OnScroll;
+var Player = require('./components/albums/music_player');
+var ApiActions = require('./actions/api_actions');
+var AlbumStore = require('./stores/album');
 
 var NavBar = React.createClass({
   mixins: [History, OnScroll],
+
   getInitialState: function () {
     return {
+      album: null,
+      song: null,
+      setup: false,
       auth: false,
       method: "",
       loggedIn: false,
-      height: 0
+      navId: "navbar"
     };
   },
 
@@ -28,10 +35,10 @@ var NavBar = React.createClass({
     if (document.getElementById("discover") && (window.pageYOffset >= document.getElementById("discover").offsetTop - 10) && !this.disappear) {
       // debugger;
       this.disappear = true;
-      this.setState({ height: "0px" });
+      this.setState({ navId: "navbar-closed" });
     } else if (document.getElementById("discover") && window.pageYOffset < document.getElementById("discover").offsetTop - 11 && this.disappear) {
       this.disappear = false
-      this.setState({ height: "50px" })
+      this.setState({ navId: "navbar" })
     }
   },
 
@@ -66,6 +73,44 @@ var NavBar = React.createClass({
     }
   },
 
+  componentDidUpdate: function () {
+    if (!this.state.setup && document.getElementById("music")) {
+      Player.setup();
+      this.state.setup = true;
+      Player.play();
+    } else if (this.state.setup) {
+      Player.play();
+    }
+  },
+
+
+  componentDidMount: function () {
+    this.listener = AlbumStore.addListener(this.onChange);
+
+  },
+
+  componentWillUnmount: function () {
+    this.listener.remove();
+  },
+
+  onChange: function () {
+    var selectedAlbum = AlbumStore.selectedAlbum();
+    var selectedSong = AlbumStore.selectedSong();
+    this.state.song = selectedSong;
+    this.setState({ album: selectedAlbum, song: selectedSong });
+  },
+
+  buttonClass: function () {
+    return (
+      this.state.song && this.state.song.playing ? "pause" : "play"
+    )
+  },
+
+  play: function () {
+    var playing = !this.state.song.playing;
+    ApiActions.playSwitch(playing);
+  },
+
   render: function () {
     var modal = "";
     if (this.state.auth) {
@@ -83,8 +128,12 @@ var NavBar = React.createClass({
         </div>
       )
     }
+    var song = ""
+    if (this.state.song !== null) {
+      song = this.state.song.song.song_url;
+    }
     return (
-      <nav id="navbar" style={{ height: "50px" }} className="navbar navbar-default navbar-fixed-top">
+      <nav id={this.state.navId} className="navbar navbar-default navbar-fixed-top">
         <div className="container-fluid">
           <div className="navbar-header">
             <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -95,7 +144,8 @@ var NavBar = React.createClass({
             </button>
             {this.goHome()}
           </div>
-
+          <audio id="music" preload="true" src={song}>
+        	</audio>
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul className="nav navbar-nav">
               <li className="active">{this.discoverPath()}</li>
@@ -106,6 +156,14 @@ var NavBar = React.createClass({
               </div>
               <button type="submit" className="btn btn-default">Submit</button>
             </form>
+
+            <div id="audioplayer">
+            	<button id="pButton" className={this.buttonClass()} onClick={this.play}></button>
+              <div id="timeline">
+          		  <div id="playhead"></div>
+              </div>
+            </div>
+
             <ul className="nav navbar-nav navbar-right">
               <li><a onClick={this.handleAuth.bind(this, "Sign Up!")} style={{cursor:"pointer"}}>New User</a></li>
               <li><a onClick={this.handleAuth.bind(this, "Sign In!")} style={{cursor:"pointer"}}>Log In</a></li>

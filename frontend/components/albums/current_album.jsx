@@ -22,6 +22,13 @@ var CurrentAlbum = React.createClass({
     this.listener.remove();
   },
 
+  componentDidUpdate: function () {
+    if (!this.state.setup && document.getElementById("pButton2")) {
+      Player.setup();
+      this.state.setup = true;
+    }
+  },
+
   onChange: function () {
     var selectedAlbum = AlbumStore.selectedAlbum();
     var selectedSong = AlbumStore.selectedSong();
@@ -29,15 +36,7 @@ var CurrentAlbum = React.createClass({
     this.setState({ album: selectedAlbum, song: selectedSong });
   },
 
-  componentDidUpdate: function () {
-    if (!this.state.setup && document.getElementById("music")) {
-      Player.setup();
-      this.state.setup = true;
-      Player.play();
-    } else if (this.state.setup) {
-      Player.play();
-    }
-  },
+
 
   play: function () {
     var playing = !this.state.song.playing;
@@ -61,14 +60,7 @@ var CurrentAlbum = React.createClass({
           <img className="current-album-img" src={this.state.album.cover_image}/><br/>
           from the album <Link to={albumLink}>{this.state.album.title}</Link><br/>
           by artist {this.state.album.artist.username}<br/>
-          <audio id="music" preload="true" src={this.state.song.song.song_url}>
-        	</audio>
-          <div id="audioplayer">
-          	<button id="pButton" className={this.buttonClass()} onClick={this.play}></button>
-            <div id="timeline">
-        		  <div id="playhead"></div>
-            </div>
-          </div>
+
           <div id="audioplayer2">
           	<button id="pButton2" className={this.buttonClass()} onClick={this.play}></button>
             <div id="timeline2">
