@@ -8,14 +8,20 @@ var ApiActions = require('../../actions/api_actions');
 var AlbumDetail = React.createClass({
   mixins: [History],
   getInitialState: function () {
+    // debugger;
     return {
+      top: this.props.style.top,
       album: AlbumStore.selectedAlbum()
     }
   },
 
-  // componentDidMount: function () {
-  //   ApiActions.selectSong(this.state.album.songs[0]);
-  // },
+  componentDidMount: function () {
+    var that = this;
+    setTimeout(function () {
+      that.setState({ top: "0" });
+    }, 600);
+
+  },
 
   handleSlideBack: function () {
     this.history.push("/")
@@ -23,8 +29,9 @@ var AlbumDetail = React.createClass({
 
   render: function () {
     var album = this.state.album;
+    // debugger;
     return (
-      <div className="album-detail">
+      <div style={{ top: this.state.top }} className="album-detail">
         <h3>{album.title} Page</h3>
         <h4>By artist {album.artist.username}</h4>
         <SongIndex album={this.state.album}/>

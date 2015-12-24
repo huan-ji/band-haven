@@ -16,15 +16,22 @@
 }
 
 body {
-  margin-top: 50px;
+  margin-top: 0px;
+}
+
+#navbar {
+  background-color: white;
+  opacity: 0.7;
+  // height: 100px;
 }
 
 .weekly {
   background-image: url(http://res.cloudinary.com/dzqfe9334/image/upload/v1450813093/0006428130_0_h0wikv.jpg);
   position:relative;
-  height: 600px;
-  background-size:auto;
-  background-position: 50%;
+  height: 800px;
+  background-size:100%;
+  background-repeat: no-repeat;
+  background-position: 70%;
 }
 
 
@@ -195,7 +202,6 @@ body {
 .discover {
   background-color: #EEE;
   height: 720px;
-  padding-top: 100px;
 }
 
 .selected-filter {
@@ -258,12 +264,11 @@ body {
 
 .album-detail {
   position: absolute;
-  top: 60px;
+  // top: 60px;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 1000px;
-  background-color: white;
 }
 
 .pageSwap-leave {
@@ -280,8 +285,10 @@ body {
 }
 
 .pageSwap-enter.pageSwap-enter-active {
+  // background-color: red;
   transform: translate3d(0, 0, 0);
   transition: all 600ms;
+
 }
 
 .reversePageSwap-leave {

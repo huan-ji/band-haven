@@ -5,15 +5,41 @@ var AlbumIndex = require('./albums/album_index');
 var FilterArea = require('./filters/filter_area');
 var History = require('react-router').History;
 var AlbumDiscovery = require('./albums/album_discovery');
+var Scroll = require('react-scroll');
+var Element = Scroll.Element;
+var Events = Scroll.Events;
+var ScrollLink = Scroll.Link;
 
 var FrontPage = React.createClass({
-  mixins: [History],
+  mixins: [History, Events],
   getInitialState: function () {
+    // debugger;
     return {
       auth: false,
       method: "",
       loggedIn: false
     };
+  },
+
+  componentDidMount: function() {
+    this.scrollEvent.register('begin', function(to, element) {
+    });
+
+    this.scrollEvent.register('end', function(to, element) {
+    });
+
+    // debugger;
+    var path = this.props.location.pathname;
+    if (path === "/discover") {
+      var discover = document.getElementById("discover");
+      var height = discover.offsetTop;
+      window.scrollTo(0, height);
+    }
+  },
+
+  componentWillUnmount: function() {
+    this.scrollEvent.remove('begin');
+    this.scrollEvent.remove('end');
   },
 
   handleAuth: function (authMethod) {
@@ -29,9 +55,9 @@ var FrontPage = React.createClass({
     this.setState({ loggedIn: false })
   },
 
-  handleSlide: function () {
-    this.history.push("/albums")
-  },
+  // handleSlide: function () {
+  //   this.history.push("/albums")
+  // },
 
   render: function () {
     var modal = "";
@@ -49,17 +75,19 @@ var FrontPage = React.createClass({
           <button onClick={this.handleAuth.bind(this, "Sign In!")}>Sign In</button>
         </div>
       )
-    }
-          // <img className="weekly-img" src="http://res.cloudinary.com/dzqfe9334/image/upload/v1450813093/0006428130_0_h0wikv.jpg"></img>
+    };
+
+
+
     return (
       <div>
-        <div className="weekly">
-        </div>
+        <Element name="weekly" className="weekly">
+        </Element>
         {modal}
-        <div className="discover">
+        <Element id="discover" name="discover" className="discover">
           <FilterArea/>
           <AlbumDiscovery/>
-        </div>
+        </Element>
       </div>
     )
   }

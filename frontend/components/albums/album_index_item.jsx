@@ -48,11 +48,10 @@ var AlbumIndexItem = React.createClass({
       album = (
         <div key={this.state.album} style={{position: "relative"}} onClick={this.handleClick}>
 
-          <img className="album-index-img" src={this.props.album.cover_image}>
-            <span className={this.state.buttonClass}>
-              <img className={this.state.imgClass} src={this.state.buttonImg}></img>
-            </span>
-          </img>
+          <img className="album-index-img" src={this.props.album.cover_image}></img>
+          <span className={this.state.buttonClass}>
+            <img className={this.state.imgClass} src={this.state.buttonImg}></img>
+          </span>
           <br/>
           <h4>{this.props.album.title}</h4>
           {this.props.album.artist.username}<br/>

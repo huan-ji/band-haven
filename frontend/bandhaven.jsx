@@ -11,21 +11,25 @@ var TransitionGroup = require('react-addons-transition-group')
 var MockIndex = require('./components/index_route');
 var NavBar = require('./nav-bar');
 var CurrentAlbum = require('./components/albums/current_album');
+var Scroll = require('react-scroll');
+var Element = Scroll.Element;
+
 
 var App = React.createClass({
   render: function () {
     var path = this.props.location.pathname;
-    var segment = path.split('/')[1] || 'root';
+    var segment = path.split('/')[2] || 'root';
+
 
     return (
-      <div>
+      <Element name="top">
         <NavBar/>
         <ReactCSS component='div' transitionName={segment === 'root' ? 'reversePageSwap' : 'pageSwap'}
           transitionEnterTimeout={600} transitionLeaveTimeout={600}>
-            {React.cloneElement(this.props.children, { key: path })}
+            {React.cloneElement(this.props.children, { key: path, style: {top: window.pageYOffset} })}
         </ReactCSS>
         <CurrentAlbum/>
-      </div>
+      </Element>
     );
   },
 
@@ -35,6 +39,7 @@ var App = React.createClass({
 var routes = (
   <Route path="/" component={App}>
     <IndexRoute component={FrontPage}/>
+    <Route path="discover" component={FrontPage}/>
     <Route path="albums/:albumId" component={AlbumDetail}/>
   </Route>
 );

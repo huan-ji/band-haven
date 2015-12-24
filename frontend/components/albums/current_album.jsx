@@ -8,12 +8,14 @@ var CurrentAlbum = React.createClass({
   getInitialState: function () {
     return {
       album: null,
-      song: null
+      song: null,
+      setup: false
     }
   },
 
   componentDidMount: function () {
     this.listener = AlbumStore.addListener(this.onChange);
+
   },
 
   componentWillUnmount: function () {
@@ -28,8 +30,13 @@ var CurrentAlbum = React.createClass({
   },
 
   componentDidUpdate: function () {
-    Player.setup();
-    Player.play();
+    if (!this.state.setup && document.getElementById("music")) {
+      Player.setup();
+      this.state.setup = true;
+      Player.play();
+    } else if (this.state.setup) {
+      Player.play();
+    }
   },
 
   play: function () {
@@ -60,6 +67,12 @@ var CurrentAlbum = React.createClass({
           	<button id="pButton" className={this.buttonClass()} onClick={this.play}></button>
             <div id="timeline">
         		  <div id="playhead"></div>
+            </div>
+          </div>
+          <div id="audioplayer2">
+          	<button id="pButton2" className={this.buttonClass()} onClick={this.play}></button>
+            <div id="timeline2">
+        		  <div id="playhead2"></div>
             </div>
           </div>
         </div>
