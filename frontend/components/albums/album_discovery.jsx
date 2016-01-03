@@ -7,6 +7,7 @@ var AlbumDiscovery = React.createClass({
     return (
       <div>
         <AlbumIndex/>
+        <CurrentAlbum/>
       </div>
     )
   }

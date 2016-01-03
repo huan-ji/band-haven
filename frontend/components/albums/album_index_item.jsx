@@ -22,8 +22,12 @@ var AlbumIndexItem = React.createClass({
     this.listener = AlbumStore.addListener(this.onChange);
   },
 
+  componentWillUnmount: function () {
+    this.listener.remove();
+  },
+
   onChange: function () {
-    if (AlbumStore.selectedSong().playing && this.state.album === AlbumStore.selectedAlbum()) {
+    if (AlbumStore.selectedSong().playing && this.props.album.id === AlbumStore.selectedAlbum().id) {
       this.setState({
         buttonImg: "assets/pause.png",
         imgClass: "pause-img",
@@ -44,9 +48,9 @@ var AlbumIndexItem = React.createClass({
 
   render: function () {
     var album = ""
-    if (this.state.album !== "") {
+    if (this.props.album !== "") {
       album = (
-        <div key={this.state.album} style={{position: "relative"}} onClick={this.handleClick}>
+        <div key={this.props.album.id} style={{position: "relative"}} onClick={this.handleClick}>
 
           <img className="album-index-img" src={this.props.album.cover_image}></img>
           <span className={this.state.buttonClass}>

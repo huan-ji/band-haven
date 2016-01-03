@@ -19,6 +19,13 @@ var ApiActions = {
     });
   },
 
+  receiveAlbum: function (album) {
+    AppDispatcher.dispatch({
+      actionType: AlbumConstants.ALBUM_RECEIVED,
+      album: album
+    });
+  },
+
   receiveGenres: function (genres) {
     AppDispatcher.dispatch({
       actionType: FilterConstants.GENRES_RECEIVED,

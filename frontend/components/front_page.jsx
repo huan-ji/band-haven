@@ -9,12 +9,17 @@ var Scroll = require('react-scroll');
 var Element = Scroll.Element;
 var Events = Scroll.Events;
 var ScrollLink = Scroll.Link;
+var FeaturedAlbum = require('./albums/featured_album');
 
 var FrontPage = React.createClass({
   mixins: [History, Events],
+
   getInitialState: function () {
-    // debugger;
     return {
+      album: "",
+      buttonImg: "assets/play.png",
+      imgClass: "featured-play-img",
+      buttonClass: "featured-play",
       auth: false,
       method: "",
       loggedIn: false
@@ -55,10 +60,6 @@ var FrontPage = React.createClass({
     this.setState({ loggedIn: false })
   },
 
-  // handleSlide: function () {
-  //   this.history.push("/albums")
-  // },
-
   render: function () {
     var modal = "";
     if (this.state.auth) {
@@ -81,9 +82,10 @@ var FrontPage = React.createClass({
 
     return (
       <div>
-        <Element name="weekly" className="weekly">
-        </Element>
+        <FeaturedAlbum/>
+
         {modal}
+
         <Element id="discover" name="discover" className="discover">
           <FilterArea/>
           <AlbumDiscovery/>

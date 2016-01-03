@@ -32,8 +32,8 @@ var NavBar = React.createClass({
   onScroll: function () {
     var discoverHeight = document.getElementById("discover").offsetTop;
 
-    if (document.getElementById("discover") && (window.pageYOffset >= document.getElementById("discover").offsetTop - 10) && !this.disappear) {
-      // debugger;
+    if (document.getElementById("discover") && document.getElementById("discover").offsetTop > 0 && (window.pageYOffset >= document.getElementById("discover").offsetTop - 10) && !this.disappear) {
+      debugger;
       this.disappear = true;
       this.setState({ navId: "navbar-closed" });
     } else if (document.getElementById("discover") && window.pageYOffset < document.getElementById("discover").offsetTop - 11 && this.disappear) {
@@ -132,6 +132,7 @@ var NavBar = React.createClass({
     if (this.state.song !== null) {
       song = this.state.song.song.song_url;
     }
+    // debugger;
     return (
       <nav id={this.state.navId} className="navbar navbar-default navbar-fixed-top">
         <div className="container-fluid">

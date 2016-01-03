@@ -7,8 +7,13 @@ var ApiUtil = {
     });
   },
 
+  fetchSingleAlbum: function (albumId) {
+    $.get("api/albums/" + albumId, {}, function (album) {
+      ApiAction.receiveAlbum(album);
+    });
+  },
+
   fetchFilteredAlbums: function (filters) {
-    // debugger;
     $.get("api/albums", { filters: filters }, function(albums) {
       // debugger;
       ApiAction.receiveAlbums(albums);

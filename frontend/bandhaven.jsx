@@ -28,7 +28,7 @@ var App = React.createClass({
           transitionEnterTimeout={600} transitionLeaveTimeout={600}>
             {React.cloneElement(this.props.children, { key: path, style: {top: window.pageYOffset} })}
         </ReactCSS>
-        <CurrentAlbum/>
+
       </Element>
     );
   },
