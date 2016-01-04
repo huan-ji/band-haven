@@ -60,9 +60,10 @@
 }
 
 #timeline2{
-	width: 150px;
+	position: relative;
+	width: 200px;
 	height: 20px;
-	margin-top: 20px;
+	margin-top: 28px;
   margin-left: 5px;
 	float: left;
 	border-radius: 15px;

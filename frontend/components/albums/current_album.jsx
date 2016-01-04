@@ -9,6 +9,7 @@ var CurrentAlbum = React.createClass({
     return {
       album: null,
       song: null,
+      songObj: null,
       setup: false
     }
   },
@@ -37,7 +38,7 @@ var CurrentAlbum = React.createClass({
       var selectedAlbum = AlbumStore.selectedAlbum();
       var selectedSong = AlbumStore.selectedSong();
       this.state.song = selectedSong;
-      this.setState({ album: selectedAlbum, song: selectedSong });
+      this.setState({ album: selectedAlbum, songObj: selectedSong, song: selectedSong.song });
     }
   },
 
@@ -48,15 +49,15 @@ var CurrentAlbum = React.createClass({
     if (AlbumStore.selectedSong().song === "") {
       ApiActions.selectAlbum(this.state.album)
     } else {
-      var playing = !this.state.song.playing;
+      var playing = !this.state.songObj.playing;
       ApiActions.playSwitch(playing);
     }
   },
 
   buttonClass: function () {
-    if (this.state.song) {
+    if (this.state.songObj) {
       return (
-        this.state.song.playing ? "pause" : "play"
+        this.state.songObj.playing ? "pause" : "play"
       )
     } else {
       return "play"
@@ -72,12 +73,19 @@ var CurrentAlbum = React.createClass({
         <div>
 
           <img className="current-album-img" src={this.state.album.cover_image}/><br/>
-          from the album <Link to={albumLink}>{this.state.album.title}</Link><br/>
-          by artist {this.state.album.artist.username}<br/>
+          <div style={{ marginLeft: "20px" }}>
+            from the album <Link className="album-link" to={albumLink}>{this.state.album.title}</Link><br/>
+            by artist {this.state.album.artist.username}<br/>
+          </div>
 
 
         </div>
       )
+    }
+
+    var songTitle = "";
+    if (this.state.song) {
+      songTitle = this.state.song.title;
     }
 
     return (
@@ -89,6 +97,7 @@ var CurrentAlbum = React.createClass({
         <div id="audioplayer2">
           <button id="pButton2" className={this.buttonClass()} onClick={this.play}></button>
           <div id="timeline2">
+            <div className="nav-bar-songname2">{songTitle}</div>
             <div id="playhead2"></div>
           </div>
         </div>

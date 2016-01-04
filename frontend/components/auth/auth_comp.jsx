@@ -54,19 +54,38 @@ var Auth = React.createClass({
     }
 
     return (
-      <div className='modal-screen'>
-        <div className='modal-content'>
-          <p>{this.props.method}</p>
-          {displayMessages}
-          <form>
-            Username: <input type="text" valueLink={this.linkState('username')}/>
-            <br/>
-            Password: <input type="password" valueLink={this.linkState('password')}/>
-            <br/>
-            <button onClick={this.handleSubmit}>Submit</button>
-          </form>
+      <form>
+        <div className="col-md-12">
+          <div className="login-input">
+            <input type="text"
+                   valueLink={this.linkState("username")}
+                   placeholder="Username"
+                   className="form-control input-sm" />
+          </div>
         </div>
-      </div>
+
+        <div className="col-md-12">
+          <div className="login-input">
+            <input type="password"
+                   valueLink={this.linkState("password")}
+                   placeholder="Password"
+                   className="form-control input-sm" />
+          </div>
+        </div>
+
+        <div className="col-md-12">
+          <div className="login-submit-button">
+            <button type="submit"
+                    className="btn btn-success btn-sm"
+                    onClick={this.handleSubmit}>Log in</button>
+
+            <button className="btn btn-success btn-sm"
+                    onClick={this.guest}>Guest</button>
+
+            <span className="flash-error"><br/>{this.state.flash}</span>
+          </div>
+        </div>
+      </form>
     );
   }
 });

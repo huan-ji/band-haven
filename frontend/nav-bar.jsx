@@ -141,7 +141,7 @@ var NavBar = React.createClass({
       songName = this.state.song.song.title;
       albumInfo = (
         <div className="albumInfo">
-          <Link style={{ fontWeight: "bold", color: "black" }} to={"/albums/" + this.state.album.id}>{this.state.album.title}</Link><br/>
+          <Link className="album-link" to={"/albums/" + this.state.album.id}>{this.state.album.title}</Link><br/>
           by {this.state.album.artist.username}
         </div>
       )
@@ -185,6 +185,12 @@ var NavBar = React.createClass({
             </div>
 
             <ul className="nav navbar-nav navbar-right">
+              <li className="dropdown">
+                <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">New User<span className="caret"></span></a>
+                <div className="dropdown-menu">
+                  <Auth method={this.state.method} callback={this.finishAuth}/>
+                </div>
+              </li>
               <li><a onClick={this.handleAuth.bind(this, "Sign Up!")} style={{cursor:"pointer"}}>New User</a></li>
               <li><a onClick={this.handleAuth.bind(this, "Sign In!")} style={{cursor:"pointer"}}>Log In</a></li>
             </ul>
@@ -195,15 +201,5 @@ var NavBar = React.createClass({
     )
   }
 });
-              // <li className="dropdown">
-              //   <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span className="caret"></span></a>
-              //   <ul className="dropdown-menu">
-              //     <li><a href="#">Action</a></li>
-              //     <li><a href="#">Another action</a></li>
-              //     <li><a href="#">Something else here</a></li>
-              //     <li role="separator" className="divider"></li>
-              //     <li><a href="#">Separated link</a></li>
-              //   </ul>
-              // </li>
 
 module.exports = NavBar;

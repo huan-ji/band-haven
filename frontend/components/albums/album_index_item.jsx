@@ -2,6 +2,7 @@ var React = require('react');
 var ReactCSS = require('react-addons-css-transition-group');
 var ApiActions = require('../../actions/api_actions');
 var AlbumStore = require('../../stores/album');
+var Link = require('react-router').Link;
 
 var AlbumIndexItem = React.createClass({
   getInitialState: function () {
@@ -43,15 +44,20 @@ var AlbumIndexItem = React.createClass({
   },
 
   render: function () {
+    var albumLink = "/albums/" + this.props.album.id;
     return (
-      <div key={this.props.album.id} style={{position: "relative"}} onClick={this.handleClick}>
-        <img className="album-index-img" src={this.props.album.cover_image}></img>
-        <span className={this.state.buttonClass}>
-          <img className={this.state.imgClass} src={this.state.buttonImg}></img>
-        </span>
-        <br/>
-        <h4>{this.props.album.title}</h4>
-        {this.props.album.artist.username}<br/>
+      <div className="album-index-item">
+        <div onClick={this.handleClick}>
+          <img className="album-index-img" src={this.props.album.cover_image}></img>
+          <span className={this.state.buttonClass}>
+            <img className={this.state.imgClass} src={this.state.buttonImg}></img>
+          </span>
+          <br/>
+        </div>
+        <div style={{ marginLeft: "5px" }}>
+          <Link to={albumLink} className="album-link">{this.props.album.title}</Link><br/>
+          {this.props.album.artist.username}<br/>
+        </div>
       </div>
     );
   }

@@ -8,7 +8,7 @@ var GenreFilter = React.createClass({
   getInitialState: function () {
     return {
       filters: [],
-      selectedText: "all"
+      selectedText: "all " + this.props.filterType
     }
   },
 
@@ -26,9 +26,9 @@ var GenreFilter = React.createClass({
   _onChange: function () {
 
     this.setState({ filters: this.props.storeAll() })
-    if (this.props.filterType === "subGenre") {
-      this.setState({ selectedText: "all" });
-      this.props.callback("all")
+    if (this.props.filterType === "sub-genres") {
+      this.setState({ selectedText: "all sub-genres" });
+      this.props.callback("all sub-genres")
     }
   },
 
@@ -56,10 +56,10 @@ var GenreFilter = React.createClass({
       });
 
       var selected = false
-      if (this.state.selectedText === "all") {
+      if (this.state.selectedText === "all " + this.props.filterType) {
         selected = true
       }
-      var allObj = {name: "all"}
+      var allObj = {name: "all " + this.props.filterType}
       this.allFilter = <FilterItem item={allObj} selected={selected} key="100" callback={this.filterCallback}/>
       filters.unshift(this.allFilter)
 

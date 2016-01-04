@@ -37,9 +37,9 @@ class Album < ActiveRecord::Base
   has_many :locations, through: :location_joins, source: :location
 
   def self.filtered_albums(filters)
-    genre_query = (filters["genre"] == "all" ? "'all'" : "genres.name")
-    sub_genre_query = (filters["sub_genre"] == "all" ? "'all'" : "sub_genres.name")
-    location_query = (filters["location"] == "all" ? "'all'" : "locations.name")
+    genre_query = (filters["genre"] == "all genres" ? "'all genres'" : "genres.name")
+    sub_genre_query = (filters["sub_genre"] == "all sub-genres" ? "'all sub-genres'" : "sub_genres.name")
+    location_query = (filters["location"] == "all locations" ? "'all locations'" : "locations.name")
     total_query = "#{genre_query} = ? and #{sub_genre_query} = ? and #{location_query} = ?"
     Album.joins(:genres).joins(:sub_genres).joins(:locations)
       .where(total_query,

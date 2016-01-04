@@ -7,11 +7,11 @@ var FilterStore = require('../../stores/filter');
 
 var FilterArea = React.createClass({
   getInitialState: function () {
-    this.genre = "all";
-    this.subGenre = "all";
-    this.location = "all";
+    this.genre = "all genres";
+    this.subGenre = "all sub-genres";
+    this.location = "all locations";
     return {
-      genreStyle: "all"
+      genreStyle: "all genres"
     }
   },
 
@@ -56,7 +56,7 @@ var FilterArea = React.createClass({
 
   render: function () {
     var genreColors = {
-      "all": "rgb(66, 160, 189)",
+      "all genres": "rgb(66, 160, 189)",
       "rock": "rgb(213, 31, 38)",
       "hip-hop/rap": "rgb(53, 100, 161)",
       "eletronic": "rgb(49, 200, 35)",
@@ -64,7 +64,7 @@ var FilterArea = React.createClass({
       "r&amp;b/soul": "rgb(77, 58, 120)"
     }
     var subGenreColors = {
-      "all": "rgb(67, 144, 168)",
+      "all genres": "rgb(67, 144, 168)",
       "rock": "rgb(190, 34, 40)",
       "hip-hop/rap": "rgb(53, 91, 141)",
       "eletronic": "rgb(49, 177, 37)",
@@ -72,7 +72,7 @@ var FilterArea = React.createClass({
       "r&amp;b/soul": "rgb(69, 55, 103)"
     }
     var locationColors = {
-      "all": "rgb(67, 144, 168)",
+      "all genres": "rgb(67, 144, 168)",
       "rock": "rgb(167, 36, 41)",
       "hip-hop/rap": "rgb(52, 82, 121)",
       "eletronic": "rgb(48, 155, 38)",
@@ -102,18 +102,18 @@ var FilterArea = React.createClass({
           storeAll={FilterStore.allGenres}
           callback={this.genreCallback}
           testStyle={genreStyle}
-          filterType="genre" />
+          filterType="genres" />
         <GenreFilter
           storeAll={FilterStore.allSubGenres}
           callback={this.subGenreCallback}
           testStyle={subGenreStyle}
-          filterType="subGenre" />
+          filterType="sub-genres" />
         <GenreFilter
           apiFetch={ApiUtil.fetchAllLocations}
           storeAll={FilterStore.allLocations}
           callback={this.locationCallback}
           testStyle={locationStyle}
-          filterType="location" />
+          filterType="locations" />
       </div>
     );
   }

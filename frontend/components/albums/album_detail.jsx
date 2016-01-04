@@ -39,9 +39,17 @@ var AlbumDetail = React.createClass({
     if (this.state.album) {
       albumDetail = (
         <div style={{ top: this.state.top }} className="album-detail">
-          <h3>{this.state.album.title} Page</h3>
-          <h4>By artist {this.state.album.artist.username}</h4>
-          <SongIndex album={this.state.album}/>
+          <div className="album-detail-info container">
+            <div className="col-xs-6">
+              <h3>{this.state.album.title}</h3>
+              <div>By {this.state.album.artist.username}</div>
+              <SongIndex album={this.state.album}/>
+            </div>
+
+            <div className="col-xs-6">
+              <img src={this.state.album.cover_image} className="album-detail-img"/>
+            </div>
+          </div>
         </div>
       )
     }
