@@ -8,9 +8,7 @@ var GenreFilter = React.createClass({
   getInitialState: function () {
     return {
       filters: [],
-      selectedText: "",
-      selectedElement: "",
-      selectedItem: ""
+      selectedText: "all"
     }
   },
 
@@ -26,19 +24,20 @@ var GenreFilter = React.createClass({
   },
 
   _onChange: function () {
+
     this.setState({ filters: this.props.storeAll() })
+    if (this.props.filterType === "subGenre") {
+      this.setState({ selectedText: "all" });
+      this.props.callback("all")
+    }
   },
 
   filterCallback: function (element, item) {
-    // debugger;
-    element.classList.add("selected-filter");
-    this.state.selectedElement !== "" ? this.state.selectedElement.classList.remove("selected-filter") : "";
-    this.setState({
-      selectedText: element.innerHTML,
-      selectedElement: element,
-      selectedItem: item
-    });
-    // debugger;
+    if (this.state.selectedText !== item.name) {
+      this.setState({
+        selectedText: item.name
+      });
+    }
     this.props.callback(element.innerHTML)
   },
 
@@ -49,12 +48,22 @@ var GenreFilter = React.createClass({
     var currentDisplay;
     if (this.state.filters.length > 0) {
       filters = this.state.filters.map(function (item, key) {
-        return <FilterItem item={item} key={key} callback={that.filterCallback}/>
+        var selected = false
+        if (that.state.selectedText === item.name) {
+          selected = true
+        }
+        return <FilterItem item={item} selected={selected} key={key} callback={that.filterCallback}/>
       });
-      // currentDisplay = "filter-row"
+
+      var selected = false
+      if (this.state.selectedText === "all") {
+        selected = true
+      }
       var allObj = {name: "all"}
-      filters.unshift(<FilterItem item={allObj} key="100" callback={that.filterCallback}/>)
-      content = <ul className="filter-row" style={this.props.testStyle}>{filters}</ul>;
+      this.allFilter = <FilterItem item={allObj} selected={selected} key="100" callback={this.filterCallback}/>
+      filters.unshift(this.allFilter)
+
+      content = <div className="filter-row" style={this.props.testStyle}>{filters}</div>;
     }
 
     return (

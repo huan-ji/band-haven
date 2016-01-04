@@ -1,6 +1,7 @@
 var React = require('react');
 var ApiUtil = require('../../util/api_util');
 var AlbumStore = require('../../stores/album');
+var ApiActions = require('../../actions/api_actions');
 
 var FeaturedAlbum = React.createClass({
   getInitialState: function () {
@@ -24,17 +25,31 @@ var FeaturedAlbum = React.createClass({
   },
 
   componentWillUnmount: function () {
-    this.listner.remove();
+    this.listener.remove();
   },
 
   onChange: function () {
     if (AlbumStore.featuredAlbum()) {
       this.setState({ album: AlbumStore.featuredAlbum() });
     }
+
+    if (AlbumStore.selectedSong() && AlbumStore.selectedSong().playing && this.state.album.id === AlbumStore.selectedAlbum().id) {
+      this.setState({
+        buttonImg: "assets/pause.png",
+        imgClass: "featured-pause-img",
+        buttonClass: "featured-pause",
+      })
+    } else {
+      this.setState({
+        buttonClass: "featured-play",
+        imgClass: "featured-play-img",
+        buttonImg: "assets/play.png"
+      })
+    }
   },
 
   handleClickFeature: function () {
-    
+    ApiActions.selectAlbum(this.state.album)
   },
 
   render: function () {

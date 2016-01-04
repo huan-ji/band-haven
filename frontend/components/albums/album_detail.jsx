@@ -4,6 +4,7 @@ var History = require('react-router').History;
 var AlbumStore = require('../../stores/album');
 var SongIndex = require('../songs/song_index');
 var ApiActions = require('../../actions/api_actions');
+var ApiUtil = require('../../util/api_util');
 
 var AlbumDetail = React.createClass({
   mixins: [History],
@@ -11,30 +12,43 @@ var AlbumDetail = React.createClass({
     // debugger;
     return {
       top: this.props.style.top,
-      album: AlbumStore.selectedAlbum()
+      album: null
     }
   },
 
   componentDidMount: function () {
     var that = this;
     setTimeout(function () {
-      that.setState({ top: "0" });
+      that.setState({ top: "60" });
+      window.scrollTo(0, 0);
     }, 600);
-
+    this.listener = AlbumStore.addListener(this.onChange);
+    ApiUtil.fetchSingleAlbum(parseInt(this.props.params.albumId));
   },
 
-  handleSlideBack: function () {
-    this.history.push("/")
+  onChange: function () {
+    this.setState({ album: AlbumStore.featuredAlbum() });
+  },
+
+  componentWillUnmount: function () {
+    this.listener.remove();
   },
 
   render: function () {
-    var album = this.state.album;
+    var albumDetail = "";
+    if (this.state.album) {
+      albumDetail = (
+        <div style={{ top: this.state.top }} className="album-detail">
+          <h3>{this.state.album.title} Page</h3>
+          <h4>By artist {this.state.album.artist.username}</h4>
+          <SongIndex album={this.state.album}/>
+        </div>
+      )
+    }
     // debugger;
     return (
-      <div style={{ top: this.state.top }} className="album-detail">
-        <h3>{album.title} Page</h3>
-        <h4>By artist {album.artist.username}</h4>
-        <SongIndex album={this.state.album}/>
+      <div>
+        {albumDetail}
       </div>
     )
   }

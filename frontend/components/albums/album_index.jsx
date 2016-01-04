@@ -38,13 +38,15 @@ var AlbumIndex = React.createClass({
     if (this.state.albums.length > 0) {
       albums = this.state.albums.map(function (album, key) {
         return (
-            <AlbumIndexItem key={key} album={album}/>
+            <AlbumIndexItem key={album.id} album={album}/>
         )
       })
     }
-    // debugger;
     return (
-        <ul className="front-page-albums">{albums}</ul>
+      <ReactCSS transitionName="album-transition" className="front-page-albums"
+        transitionEnterTimeout={600} transitionLeaveTimeout={100}>
+        {albums}
+      </ReactCSS>
     );
   }
 });

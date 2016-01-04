@@ -1,8 +1,7 @@
 #audioplayer{
+	display: inline;
 	width: 280px;
 	height: 60px;
-	margin: 50px auto auto auto;
-  border: 1px solid lightgrey;
 }
 
 #pButton{
@@ -14,17 +13,17 @@
     background-position: center;
     float:left;
     outline:none;
-    border-right: 1px solid lightgrey;
     cursor:pointer;
+		margin-left: 50px;
 }
 
 .play{background: url('http://www.alexkatz.me/codepen/images/play.png') ;}
 .pause{background: url('http://www.alexkatz.me/codepen/images/pause.png') ;}
 
 #timeline{
-	width: 200px;
-	height: 20px;
-	margin-top: 20px;
+	width: 300px;
+	height: 10px;
+	margin-top: 28px;
   margin-left: 5px;
 	float: left;
 	border-radius: 15px;
@@ -35,7 +34,7 @@
 	width: 18px;
 	height: 18px;
 	border-radius: 50%;
-	margin-top: 1px;
+	margin-top: -4px;
 	background: rgba(0, 0, 0,1);
 
 }

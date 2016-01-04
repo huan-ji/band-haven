@@ -7,8 +7,12 @@ var FilterItem = React.createClass({
   },
 
   render: function () {
+    var className = "filter-item";
+    if (this.props.selected === true) {
+      className = "filter-item selected-filter"
+    }
     return (
-      <div onClick={this.handleClick} className="filter-item">
+      <div onClick={this.handleClick} className={className}>
         {this.props.item.name}
       </div>
     )

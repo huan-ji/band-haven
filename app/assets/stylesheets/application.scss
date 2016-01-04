@@ -5,14 +5,13 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-// .navbar {
-//   height: 60px;
-//   padding-top: 5px;
-//   transition: height 0.5s;
-// }
-
 body {
   margin-top: 0px;
+}
+
+.logo-img {
+  max-width: 80%;
+  height: auto;
 }
 
 #navbar {
@@ -26,6 +25,17 @@ body {
   z-index: -100;
   opacity: 0.01;
   transition: all 0.5s;
+}
+
+.albumInfo {
+  display: inline-block;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.nav-bar-songname {
+  position:absolute;
+  top: 5px;
 }
 
 .featured-caption {
@@ -49,32 +59,44 @@ body {
   left: 15%;
   top: 60%;
   z-index: 50;
+  cursor:pointer;
 }
 
 .featured-play-img {
+  // background-color: white;
+  color:white;
   position: absolute;
   width: 100px;
   height: 75px;
   top: 10%;
   left: 15%;
   opacity: 1;
+}
+
+.featured-pause-img {
+  color:blue;
+  // background-color: blue;
+  position: absolute;
+  width: 60px;
+  height: 40px;
+  top: 30%;
+  left: 30%;
+  opacity: 0.7;
 
 }
 
-.featured-play {
-
+.top-img {
+  margin-left: 20px;
+  width: 2%;
+  height: auto;
+  display:inline;
+  cursor:pointer;
 }
 
-.weekly {
-  background-image: url(http://res.cloudinary.com/dzqfe9334/image/upload/v1450813093/0006428130_0_h0wikv.jpg);
-  position:relative;
-  height: 800px;
-  background-size:100%;
-  background-repeat: no-repeat;
-  background-position: 70%;
+.discover-bar h3 {
+  padding-left: 40px;
+  display:inline;
 }
-
-
 
 .modal-screen {
   z-index: 998;
@@ -105,23 +127,24 @@ body {
   display: inline-flex;
   flex-wrap: wrap;
   max-width: 70%;
+  padding-left: 80px;
+  padding-top: 10px;
 }
 
 .front-page-albums div {
-  margin: 10px;
+
+  margin: 5px;
 }
 
 .current-album {
   background-color: white;
-  opacity: 0.7;
-  float: right;
-  position: relative;
-  margin-top: 120px;
-  top: 30px;
-  right: 30px;
+  position: absolute;
+  top: 15px;
+  right: 80px;
   padding: 30px;
-  z-index: 1001;
-  display: inline-block;
+  height:520px;
+  width:380px;
+  // display: inline-block;
   border: 1px solid white;
 }
 
@@ -129,6 +152,8 @@ body {
   display:block;
   margin-left: auto;
   margin-right: auto;
+  width: 90%;
+  height:auto;
 }
 
 .album-index-img {
@@ -221,7 +246,9 @@ body {
 .filter-row {
   display: block;
   margin: 0;
+  padding-left: 80px;
   height: 40px;
+  position: relative;
 }
 
 .filter-item {
@@ -241,6 +268,7 @@ body {
 
 .discover {
   background-color: #EEE;
+  padding: 20px 0px 20px 0px;
   height: 720px;
 }
 
@@ -271,16 +299,6 @@ body {
   height: 0px;
 }
 
-.album-transition-appear {
-  opacity: 0.01;
-  transition: all 600ms;
-}
-
-.album-transition-appear.album-transition-appear-active {
-  opacity: 1;
-  transition: all 600ms;
-}
-
 .album-transition-enter {
   opacity: 0.01;
   transition: all 600ms;
@@ -293,18 +311,22 @@ body {
 
 .album-transition-leave {
   opacity: 1;
-  transition: all 600ms;
+  // position:relative;
+  display:none;
+  transition: all 100ms;
 }
 
 .album-transition-leave.album-transition-leave-active {
   opacity: 0.01;
-  transition: all 600ms;
+  // position: fixed;
+  // z-index: -100;
+  transition: all 100ms;
 }
 
 
 .album-detail {
   position: absolute;
-  // top: 60px;
+  background-color: white;
   left: 0;
   width: 100%;
   height: 100%;

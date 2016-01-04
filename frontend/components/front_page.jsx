@@ -10,6 +10,7 @@ var Element = Scroll.Element;
 var Events = Scroll.Events;
 var ScrollLink = Scroll.Link;
 var FeaturedAlbum = require('./albums/featured_album');
+var DiscoverBar = require('./albums/discover_bar');
 
 var FrontPage = React.createClass({
   mixins: [History, Events],
@@ -83,10 +84,9 @@ var FrontPage = React.createClass({
     return (
       <div>
         <FeaturedAlbum/>
-
         {modal}
-
         <Element id="discover" name="discover" className="discover">
+          <DiscoverBar/>
           <FilterArea/>
           <AlbumDiscovery/>
         </Element>

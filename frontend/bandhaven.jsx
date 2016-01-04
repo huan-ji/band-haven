@@ -26,7 +26,7 @@ var App = React.createClass({
         <NavBar/>
         <ReactCSS component='div' transitionName={segment === 'root' ? 'reversePageSwap' : 'pageSwap'}
           transitionEnterTimeout={600} transitionLeaveTimeout={600}>
-            {React.cloneElement(this.props.children, { key: path, style: {top: window.pageYOffset} })}
+            {React.cloneElement(this.props.children, { key: path, style: {top: window.pageYOffset + 60} })}
         </ReactCSS>
 
       </Element>
@@ -35,7 +35,6 @@ var App = React.createClass({
 
 })
 
-    // <IndexRoute component={FrontPage}/>
 var routes = (
   <Route path="/" component={App}>
     <IndexRoute component={FrontPage}/>

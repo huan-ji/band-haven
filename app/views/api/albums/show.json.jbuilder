@@ -1,1 +1,1 @@
-json.extract! @album, :id, :title, :description, :songs
+json.extract! @album, :id, :title, :description, :songs, :artist

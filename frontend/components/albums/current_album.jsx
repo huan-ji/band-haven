@@ -30,23 +30,37 @@ var CurrentAlbum = React.createClass({
   },
 
   onChange: function () {
-    var selectedAlbum = AlbumStore.selectedAlbum();
-    var selectedSong = AlbumStore.selectedSong();
-    this.state.song = selectedSong;
-    this.setState({ album: selectedAlbum, song: selectedSong });
+    if (this.state.album === null) {
+      // debugger;
+      this.setState({ album: AlbumStore.all()[0], song: AlbumStore.all()[0].songs[0] })
+    } else if (AlbumStore.selectedAlbum() !== null){
+      var selectedAlbum = AlbumStore.selectedAlbum();
+      var selectedSong = AlbumStore.selectedSong();
+      this.state.song = selectedSong;
+      this.setState({ album: selectedAlbum, song: selectedSong });
+    }
   },
 
 
 
   play: function () {
-    var playing = !this.state.song.playing;
-    ApiActions.playSwitch(playing);
+    // debugger;
+    if (AlbumStore.selectedSong().song === "") {
+      ApiActions.selectAlbum(this.state.album)
+    } else {
+      var playing = !this.state.song.playing;
+      ApiActions.playSwitch(playing);
+    }
   },
 
   buttonClass: function () {
-    return (
-      this.state.song.playing ? "pause" : "play"
-    )
+    if (this.state.song) {
+      return (
+        this.state.song.playing ? "pause" : "play"
+      )
+    } else {
+      return "play"
+    }
   },
 
   render: function () {
@@ -56,24 +70,29 @@ var CurrentAlbum = React.createClass({
       var albumLink = "/albums/" + this.state.album.id
       currentAlbum = (
         <div>
-          <script src="./music_player.js"></script>
+
           <img className="current-album-img" src={this.state.album.cover_image}/><br/>
           from the album <Link to={albumLink}>{this.state.album.title}</Link><br/>
           by artist {this.state.album.artist.username}<br/>
 
-          <div id="audioplayer2">
-          	<button id="pButton2" className={this.buttonClass()} onClick={this.play}></button>
-            <div id="timeline2">
-        		  <div id="playhead2"></div>
-            </div>
-          </div>
+
         </div>
       )
     }
 
     return (
       <div className="current-album">
+
         {currentAlbum}
+
+        <script src="./music_player.js"></script>
+        <div id="audioplayer2">
+          <button id="pButton2" className={this.buttonClass()} onClick={this.play}></button>
+          <div id="timeline2">
+            <div id="playhead2"></div>
+          </div>
+        </div>
+
       </div>
     )
   }

@@ -101,16 +101,19 @@ var FilterArea = React.createClass({
           apiFetch={ApiUtil.fetchAllGenres}
           storeAll={FilterStore.allGenres}
           callback={this.genreCallback}
-          testStyle={genreStyle} />
+          testStyle={genreStyle}
+          filterType="genre" />
         <GenreFilter
           storeAll={FilterStore.allSubGenres}
           callback={this.subGenreCallback}
-          testStyle={subGenreStyle} />
+          testStyle={subGenreStyle}
+          filterType="subGenre" />
         <GenreFilter
           apiFetch={ApiUtil.fetchAllLocations}
           storeAll={FilterStore.allLocations}
           callback={this.locationCallback}
-          testStyle={locationStyle} />
+          testStyle={locationStyle}
+          filterType="location" />
       </div>
     );
   }

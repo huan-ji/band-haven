@@ -35,6 +35,10 @@ var selectAlbum = function (album) {
 }
 
 var selectSong = function (song) {
+  if (_selectedAlbum === null && song.album_id === _featuredAlbum.id) {
+    _selectedAlbum = _featuredAlbum;
+  }
+
   if (_selectedSong.song === song) {
     _selectedSong.playing = !_selectedSong.playing;
   } else {

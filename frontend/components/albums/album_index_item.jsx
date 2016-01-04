@@ -14,12 +14,8 @@ var AlbumIndexItem = React.createClass({
   },
 
   componentDidMount: function () {
-    var that = this;
-    setTimeout(function () {
-      // debugger;
-      that.setState({ album: that.props.album });
-    }, 1)
     this.listener = AlbumStore.addListener(this.onChange);
+    this.onChange();
   },
 
   componentWillUnmount: function () {
@@ -47,27 +43,16 @@ var AlbumIndexItem = React.createClass({
   },
 
   render: function () {
-    var album = ""
-    if (this.props.album !== "") {
-      album = (
-        <div key={this.props.album.id} style={{position: "relative"}} onClick={this.handleClick}>
-
-          <img className="album-index-img" src={this.props.album.cover_image}></img>
-          <span className={this.state.buttonClass}>
-            <img className={this.state.imgClass} src={this.state.buttonImg}></img>
-          </span>
-          <br/>
-          <h4>{this.props.album.title}</h4>
-          {this.props.album.artist.username}<br/>
-        </div>
-      )
-    }
-
     return (
-      <ReactCSS transitionName="album-transition"
-        transitionEnterTimeout={600} transitionLeaveTimeout={600}>
-        {album}
-      </ReactCSS>
+      <div key={this.props.album.id} style={{position: "relative"}} onClick={this.handleClick}>
+        <img className="album-index-img" src={this.props.album.cover_image}></img>
+        <span className={this.state.buttonClass}>
+          <img className={this.state.imgClass} src={this.state.buttonImg}></img>
+        </span>
+        <br/>
+        <h4>{this.props.album.title}</h4>
+        {this.props.album.artist.username}<br/>
+      </div>
     );
   }
 });

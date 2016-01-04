@@ -30,15 +30,18 @@ var NavBar = React.createClass({
   },
 
   onScroll: function () {
-    var discoverHeight = document.getElementById("discover").offsetTop;
-
-    if (document.getElementById("discover") && document.getElementById("discover").offsetTop > 0 && (window.pageYOffset >= document.getElementById("discover").offsetTop - 10) && !this.disappear) {
-      debugger;
-      this.disappear = true;
-      this.setState({ navId: "navbar-closed" });
-    } else if (document.getElementById("discover") && window.pageYOffset < document.getElementById("discover").offsetTop - 11 && this.disappear) {
-      this.disappear = false
-      this.setState({ navId: "navbar" })
+    if (document.getElementById("discover")) {
+      var discoverHeight = document.getElementById("discover").offsetTop;
+      if (document.getElementById("discover") && document.getElementById("discover").offsetTop > 0 && (window.pageYOffset >= document.getElementById("discover").offsetTop - 15) && !this.disappear) {
+        this.disappear = true;
+        this.setState({ navId: "navbar-closed" });
+      } else if (document.getElementById("discover") && window.pageYOffset < document.getElementById("discover").offsetTop - 16 && this.disappear) {
+        this.disappear = false;
+        this.setState({ navId: "navbar" })
+      }
+    } else {
+      this.disappear = false;
+      this.setState({ navId: "navbar" });
     }
   },
 
@@ -66,10 +69,11 @@ var NavBar = React.createClass({
   },
 
   goHome: function () {
+    var navbarImg = <img className="logo-img" alt="BandHaven" src="assets/logo.png"></img>
     if (location.hash.split("/")[2]) {
-      return <Link className="navbar-brand" to="/" style={{cursor: "pointer"}}>BandHaven</Link>
+      return <Link className="navbar-brand" to="/" style={{cursor: "pointer"}}>{navbarImg}</Link>
     } else {
-      return <ScrollLink className="navbar-brand" style={{cursor: "pointer"}} to="top" spy={true} smooth={true} offset={50} duration={500}>BandHaven</ScrollLink>
+      return <ScrollLink className="navbar-brand" style={{cursor: "pointer"}} to="top" spy={true} smooth={true} offset={50} duration={500}>{navbarImg}</ScrollLink>
     }
   },
 
@@ -128,9 +132,19 @@ var NavBar = React.createClass({
         </div>
       )
     }
-    var song = ""
-    if (this.state.song !== null) {
-      song = this.state.song.song.song_url;
+    var songUrl = "";
+    var songName = "";
+    var albumInfo = "";
+    if (this.state.song && this.state.song.song !== "") {
+      // debugger;
+      songUrl = this.state.song.song.song_url;
+      songName = this.state.song.song.title;
+      albumInfo = (
+        <div className="albumInfo">
+          <Link style={{ fontWeight: "bold", color: "black" }} to={"/albums/" + this.state.album.id}>{this.state.album.title}</Link><br/>
+          by {this.state.album.artist.username}
+        </div>
+      )
     }
     // debugger;
     return (
@@ -145,8 +159,10 @@ var NavBar = React.createClass({
             </button>
             {this.goHome()}
           </div>
-          <audio id="music" preload="true" src={song}>
+
+          <audio id="music" preload="true" src={songUrl}>
         	</audio>
+
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul className="nav navbar-nav">
               <li className="active">{this.discoverPath()}</li>
@@ -161,8 +177,11 @@ var NavBar = React.createClass({
             <div id="audioplayer">
             	<button id="pButton" className={this.buttonClass()} onClick={this.play}></button>
               <div id="timeline">
+                <div className="nav-bar-songname">{songName}</div>
           		  <div id="playhead"></div>
+
               </div>
+              {albumInfo}
             </div>
 
             <ul className="nav navbar-nav navbar-right">
