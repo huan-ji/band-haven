@@ -13,6 +13,7 @@ var OnScroll = require("react-window-mixins").OnScroll;
 var Player = require('./components/albums/music_player');
 var ApiActions = require('./actions/api_actions');
 var AlbumStore = require('./stores/album');
+var AuthStore = require('./stores/auth');
 
 var NavBar = React.createClass({
   mixins: [History, OnScroll],
@@ -25,7 +26,8 @@ var NavBar = React.createClass({
       auth: false,
       method: "",
       loggedIn: false,
-      navId: "navbar"
+      navId: "navbar",
+      user: null
     };
   },
 
@@ -49,8 +51,8 @@ var NavBar = React.createClass({
     this.setState({ auth: true, method: authMethod })
   },
 
-  finishAuth: function () {
-    this.setState({ auth: false, loggedIn: true })
+  checkAuth: function () {
+    ApiUtil.checkAuth();
   },
 
   handleLogOut: function () {
@@ -87,14 +89,25 @@ var NavBar = React.createClass({
     }
   },
 
+  authChange: function () {
+    var user = AuthStore.user();
+    if (user) {
+      this.setState({ loggedIn: true, user: user })
+    } else {
+      this.setState({ loggedIn: false })
+    }
+  },
+
 
   componentDidMount: function () {
     this.listener = AlbumStore.addListener(this.onChange);
-
+    this.authListener = AuthStore.addListener(this.authChange);
+    this.checkAuth();
   },
 
   componentWillUnmount: function () {
     this.listener.remove();
+    this.authListener.remove();
   },
 
   onChange: function () {
@@ -118,20 +131,37 @@ var NavBar = React.createClass({
   render: function () {
     var modal = "";
     if (this.state.auth) {
-      modal = <Auth method={this.state.method} callback={this.finishAuth}/>
+      modal = <Auth method={this.state.method} callback={this.checkAuth}/>
     };
 
-    var buttons;
+    var authMenu;
     if (this.state.loggedIn) {
-      buttons = <button onClick={this.handleLogOut}>Log Out</button>
+      authMenu = (
+        <ul className="nav navbar-nav navbar-right">
+          <li>
+            <a onClick={this.handleLogOut}>Log Out</a>
+          </li>
+        </ul>
+      )
     } else {
-      buttons = (
-        <div>
-          <button onClick={this.handleAuth.bind(this, "Sign Up!")}>Sign Up</button>
-          <button onClick={this.handleAuth.bind(this, "Sign In!")}>Sign In</button>
-        </div>
+      authMenu = (
+        <ul className="nav navbar-nav navbar-right">
+          <li className="dropdown">
+            <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">New User<span className="caret"></span></a>
+            <div className="dropdown-menu" id="login-dropdown">
+              <Auth method="Sign Up" callback={this.checkAuth}/>
+            </div>
+          </li>
+          <li className="dropdown">
+            <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Log In<span className="caret"></span></a>
+            <div className="dropdown-menu" id="login-dropdown">
+              <Auth method="Sign In" callback={this.checkAuth}/>
+            </div>
+          </li>
+        </ul>
       )
     }
+
     var songUrl = "";
     var songName = "";
     var albumInfo = "";
@@ -183,17 +213,8 @@ var NavBar = React.createClass({
               </div>
               {albumInfo}
             </div>
+            {authMenu}
 
-            <ul className="nav navbar-nav navbar-right">
-              <li className="dropdown">
-                <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">New User<span className="caret"></span></a>
-                <div className="dropdown-menu">
-                  <Auth method={this.state.method} callback={this.finishAuth}/>
-                </div>
-              </li>
-              <li><a onClick={this.handleAuth.bind(this, "Sign Up!")} style={{cursor:"pointer"}}>New User</a></li>
-              <li><a onClick={this.handleAuth.bind(this, "Sign In!")} style={{cursor:"pointer"}}>Log In</a></li>
-            </ul>
           </div>
         </div>
         {modal}

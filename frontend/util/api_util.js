@@ -44,6 +44,12 @@ var ApiUtil = {
     });
   },
 
+  checkAuth: function () {
+    $.get("users", {}, function (user) {
+      ApiAction.receiveUser(user);
+    })
+  },
+
   createUser: function (user) {
     $.post("users", { user: user }, function (results) {
       ApiAction.receiveAuthMessages(results);

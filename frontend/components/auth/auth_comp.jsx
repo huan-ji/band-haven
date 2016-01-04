@@ -9,7 +9,7 @@ var Auth = React.createClass({
     return {
       username: "",
       password: "",
-      messages: []
+      messages: [],
     };
   },
 
@@ -26,7 +26,9 @@ var Auth = React.createClass({
     // debugger;
     if (messages[0] === "Success!") {
       this.props.callback();
-    } else {
+    } else if (messages[0] === "Invalid username or password" && this.props.method === "Sign In") {
+      this.setState({ messages: messages });
+    } else if (messages[0] !== "Invalid username or password" && this.props.method === "Sign Up") {
       this.setState({ messages: messages });
     }
   },
@@ -38,7 +40,8 @@ var Auth = React.createClass({
       password: this.state.password,
       artist: false
     };
-    this.props.method === "Sign Up!" ? ApiUtil.createUser(user) : ApiUtil.signInUser(user)
+    // debugger;
+    this.props.method === "Sign Up" ? ApiUtil.createUser(user) : ApiUtil.signInUser(user)
   },
 
   render: function () {
@@ -77,12 +80,12 @@ var Auth = React.createClass({
           <div className="login-submit-button">
             <button type="submit"
                     className="btn btn-success btn-sm"
-                    onClick={this.handleSubmit}>Log in</button>
+                    onClick={this.handleSubmit}>{this.props.method}</button>
 
             <button className="btn btn-success btn-sm"
                     onClick={this.guest}>Guest</button>
 
-            <span className="flash-error"><br/>{this.state.flash}</span>
+            <span className="flash-error"><br/>{this.state.messages}</span>
           </div>
         </div>
       </form>

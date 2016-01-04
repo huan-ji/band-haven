@@ -115,7 +115,7 @@ Nothing changes.
 Over and on,
 over and gone, she…
 over and on
-over and gone… ", album_id: 2, duration: "8:53", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
+over and gone… ", album_id: 2, duration: "8:53", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1450739945/The_Weeknd_-_The_Hills_wcpsdm.mp3", public: true)
 Song.create(title: "Unturning", lyrics: "Over and gone,
 She waited.
 

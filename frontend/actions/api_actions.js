@@ -67,6 +67,13 @@ var ApiActions = {
       actionType: AlbumConstants.PLAY_SWITCHED,
       playing: playing
     });
+  },
+
+  receiveUser: function (user) {
+    AppDispatcher.dispatch({
+      actionType: AuthConstants.RECEIVE_USER,
+      user: user
+    });
   }
 };
 
