@@ -22,8 +22,8 @@ var Auth = React.createClass({
   },
 
   _onChange: function () {
+
     var messages = AuthStore.all();
-    // debugger;
     if (messages[0] === "Success!") {
       this.props.callback();
     } else if (messages[0] === "Invalid username or password" && this.props.method === "Sign In") {
@@ -42,6 +42,17 @@ var Auth = React.createClass({
     };
     // debugger;
     this.props.method === "Sign Up" ? ApiUtil.createUser(user) : ApiUtil.signInUser(user)
+  },
+
+  guest: function (e) {
+    e.preventDefault();
+    var user = {
+      username: "guest",
+      password: "password",
+      artist: false
+    };
+
+    ApiUtil.signInUser(user)
   },
 
   render: function () {
