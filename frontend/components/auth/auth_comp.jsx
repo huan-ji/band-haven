@@ -22,7 +22,7 @@ var Auth = React.createClass({
   },
 
   _onChange: function () {
-
+    // debugger;
     var messages = AuthStore.all();
     if (messages[0] === "Success!") {
       this.props.callback();
@@ -40,7 +40,6 @@ var Auth = React.createClass({
       password: this.state.password,
       artist: false
     };
-    // debugger;
     this.props.method === "Sign Up" ? ApiUtil.createUser(user) : ApiUtil.signInUser(user)
   },
 
@@ -68,7 +67,7 @@ var Auth = React.createClass({
     }
 
     return (
-      <form>
+      <form className="login-form">
         <div className="col-md-12">
           <div className="login-input">
             <input type="text"
@@ -94,9 +93,14 @@ var Auth = React.createClass({
                     onClick={this.handleSubmit}>{this.props.method}</button>
 
             <button className="btn btn-success btn-sm"
-                    onClick={this.guest}>Guest</button>
+                    onClick={this.guest}
+                    style={{ marginLeft: "10px" }}>Guest</button>
 
-            <span className="flash-error"><br/>{this.state.messages}</span>
+            <span className="flash-error"><br/>
+              {this.state.messages.map(function (message) {
+                return <li>{message}</li>
+              })}
+            </span>
           </div>
         </div>
       </form>

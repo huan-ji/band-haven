@@ -50,17 +50,12 @@ var NavBar = React.createClass({
     }
   },
 
-  handleAuth: function (authMethod) {
-    this.setState({ auth: true, method: authMethod })
-  },
-
   checkAuth: function () {
     ApiUtil.checkAuth();
   },
 
   handleLogOut: function () {
     ApiUtil.signOutUser();
-    this.setState({ loggedIn: false, user: null })
   },
 
   discoverPath: function () {
@@ -93,11 +88,12 @@ var NavBar = React.createClass({
   },
 
   authChange: function () {
+
     var user = AuthStore.user();
     if (user) {
       this.setState({ loggedIn: true, user: user })
     } else {
-      this.setState({ loggedIn: false })
+      this.setState({ loggedIn: false, user: null })
     }
   },
 
@@ -184,7 +180,7 @@ var NavBar = React.createClass({
       authMenu = (
         <ul className="nav navbar-nav navbar-right">
           <li>
-            <a onClick={this.handleLogOut}>Log Out</a>
+            <a href="#" onClick={this.handleLogOut}>Log Out</a>
           </li>
         </ul>
       )

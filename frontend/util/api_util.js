@@ -52,6 +52,7 @@ var ApiUtil = {
 
   createUser: function (user) {
     $.post("users", { user: user }, function (results) {
+      // debugger;
       ApiAction.receiveAuthMessages(results);
     });
   },
@@ -67,7 +68,7 @@ var ApiUtil = {
       url: "sessions",
       type: "DELETE",
       success: function (user) {
-
+        ApiAction.logOutUser()
       }
     });
   },

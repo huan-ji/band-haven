@@ -82,10 +82,9 @@ var ApiActions = {
     });
   },
 
-  logOutUser: function (user) {
+  logOutUser: function () {
     AppDispatcher.dispatch({
       actionType: AuthConstants.LOGOUT_USER,
-      user: user
     });
   }
 

@@ -24,7 +24,6 @@ var removeUser = function (user) {
 AuthStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
     case AuthConstants.MESSAGES_RECEIVED:
-      // debugger;
       resetMessages(payload.messages);
       break;
     case AuthConstants.RECEIVE_USER:
