@@ -25,6 +25,13 @@ var ApiActions = {
     });
   },
 
+  receiveShowAlbum: function (album) {
+    AppDispatcher.dispatch({
+      actionType: AlbumConstants.SHOW_ALBUM_RECEIVED,
+      album: album
+    });
+  },
+
   receiveAlbum: function (album) {
     AppDispatcher.dispatch({
       actionType: AlbumConstants.ALBUM_RECEIVED,

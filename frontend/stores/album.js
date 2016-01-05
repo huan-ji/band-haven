@@ -2,6 +2,7 @@ var Store = require('flux/utils').Store;
 var AppDispatcher = require('../dispatcher/dispatcher');
 var _albums = {};
 var _featuredAlbum = null;
+var _showAlbum = null;
 var _selectedAlbum = null;
 var _searchAlbums = null;
 var _selectedSong = { song: "", playing: false};
@@ -20,6 +21,11 @@ var resetAlbums = function (albums) {
 
 var featuredAlbum = function (album) {
   _featuredAlbum = album;
+  AlbumStore.__emitChange();
+}
+
+var showAlbum = function (album) {
+  _showAlbum = album;
   AlbumStore.__emitChange();
 }
 
@@ -70,6 +76,9 @@ AlbumStore.__onDispatch = function (payload) {
     case AlbumConstants.ALBUM_RECEIVED:
       featuredAlbum(payload.album);
       break;
+    case AlbumConstants.SHOW_ALBUM_RECEIVED:
+      showAlbum(payload.album);
+      break;
     case AlbumConstants.ALBUM_SELECTED:
       selectAlbum(payload.album);
       break;
@@ -98,6 +107,10 @@ AlbumStore.all = function () {
 
 AlbumStore.featuredAlbum = function () {
   return _featuredAlbum;
+}
+
+AlbumStore.showAlbum = function () {
+  return _showAlbum;
 }
 
 AlbumStore.selectedAlbum = function () {

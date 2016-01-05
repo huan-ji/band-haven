@@ -31,13 +31,14 @@ var CurrentAlbum = React.createClass({
   },
 
   onChange: function () {
-    if (this.state.album === null) {
-      // debugger;
+    if (this.state.album === null && AlbumStore.selectedAlbum() === null) {
+
       this.setState({ album: AlbumStore.all()[0], song: AlbumStore.all()[0].songs[0] })
     } else if (AlbumStore.selectedAlbum() !== null){
       var selectedAlbum = AlbumStore.selectedAlbum();
       var selectedSong = AlbumStore.selectedSong();
-      this.state.song = selectedSong;
+      
+      // this.state.song = selectedSong;
       this.setState({ album: selectedAlbum, songObj: selectedSong, song: selectedSong.song });
     }
   },

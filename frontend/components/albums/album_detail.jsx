@@ -23,11 +23,11 @@ var AlbumDetail = React.createClass({
       window.scrollTo(0, 0);
     }, 600);
     this.listener = AlbumStore.addListener(this.onChange);
-    ApiUtil.fetchSingleAlbum(parseInt(this.props.params.albumId));
+    ApiUtil.showSingleAlbum(parseInt(this.props.params.albumId));
   },
 
   onChange: function () {
-    this.setState({ album: AlbumStore.featuredAlbum() });
+    this.setState({ album: AlbumStore.showAlbum() });
   },
 
   componentWillUnmount: function () {

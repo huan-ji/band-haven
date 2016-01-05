@@ -13,6 +13,12 @@ var ApiUtil = {
     });
   },
 
+  showSingleAlbum: function (albumId) {
+    $.get("api/albums/" + albumId, {}, function (album) {
+      ApiAction.receiveShowAlbum(album);
+    });
+  },
+
   fetchFilteredAlbums: function (filters) {
     $.get("api/albums", { filters: filters }, function(albums) {
       // debugger;
