@@ -14,6 +14,7 @@ var Player = require('./components/albums/music_player');
 var ApiActions = require('./actions/api_actions');
 var AlbumStore = require('./stores/album');
 var AuthStore = require('./stores/auth');
+var Fuse = require('fuse.js');
 
 var NavBar = React.createClass({
   mixins: [History, OnScroll],
@@ -27,7 +28,9 @@ var NavBar = React.createClass({
       method: "",
       loggedIn: false,
       navId: "navbar",
-      user: null
+      user: null,
+      searchText: "",
+      searchResults: []
     };
   },
 
@@ -57,7 +60,7 @@ var NavBar = React.createClass({
 
   handleLogOut: function () {
     ApiUtil.signOutUser();
-    this.setState({ loggedIn: false })
+    this.setState({ loggedIn: false, user: null })
   },
 
   discoverPath: function () {
@@ -111,6 +114,42 @@ var NavBar = React.createClass({
   },
 
   onChange: function () {
+    if (AlbumStore.allSearch()) {
+      var albums = AlbumStore.allSearch();
+      var songs = []
+      albums.forEach(function (album) {
+        album.songs.forEach(function (song) {
+          songs.push(song);
+        })
+      })
+
+      var options = {
+        keys: ['title', 'artist.username'],
+      };
+      var fuse = new Fuse(albums, options);
+      var albumResult = fuse.search(this.state.searchText);
+
+      var options2 = {
+        keys: ['title']
+      };
+
+      var fuse2 = new Fuse(songs, options2);
+      var songResult = fuse2.search(this.state.searchText);
+      songResult.forEach(function (song) {
+        var unique = true
+        for (var i = 0; i < albumResult.length; i++) {
+          if (albumResult[i].id === song.album.id) {
+            unique = false
+          }
+        }
+
+        if (unique) {
+          albumResult.push(song.album);
+        }
+      })
+
+      this.setState({ searchResults: albumResult });
+    }
     var selectedAlbum = AlbumStore.selectedAlbum();
     var selectedSong = AlbumStore.selectedSong();
     this.state.song = selectedSong;
@@ -126,6 +165,12 @@ var NavBar = React.createClass({
   play: function () {
     var playing = !this.state.song.playing;
     ApiActions.playSwitch(playing);
+  },
+
+  searchChange: function (e) {
+    var searchText = e.target.value;
+    this.setState({ searchText: searchText });
+    ApiUtil.fetchAllAlbums();
   },
 
   render: function () {
@@ -176,7 +221,18 @@ var NavBar = React.createClass({
         </div>
       )
     }
-    // debugger;
+
+
+    var searchResults = "";
+    if (this.state.searchResults.length > 0) {
+      searchResults = this.state.searchResults.map(function (result) {
+        var resultLink = "/albums/" + result.id
+        return (
+          <Link to={resultLink}>{result.title}<br/></Link>
+        )
+      })
+    }
+
     return (
       <nav id={this.state.navId} className="navbar navbar-default navbar-fixed-top">
         <div className="container-fluid">
@@ -199,10 +255,17 @@ var NavBar = React.createClass({
             </ul>
             <form className="navbar-form navbar-left" role="search">
               <div className="form-group">
-                <input type="text" className="form-control" placeholder="Does not work yet"/>
+                <input type="text" className="form-control"
+                  style={{ width: "250px" }}
+                  value={this.state.searchText}
+                  onChange={this.searchChange}
+                  placeholder="Search by Album, Track, or Artist"/>
               </div>
-              <button type="submit" className="btn btn-default">Submit</button>
+              <ul className="search-result">
+                {searchResults}
+              </ul>
             </form>
+
 
             <div id="audioplayer">
             	<button id="pButton" className={this.buttonClass()} onClick={this.play}></button>
@@ -217,7 +280,6 @@ var NavBar = React.createClass({
 
           </div>
         </div>
-        {modal}
       </nav>
     )
   }

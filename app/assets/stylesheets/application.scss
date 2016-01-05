@@ -9,6 +9,22 @@ body {
   margin-top: 0px;
 }
 
+.search-result {
+  position: absolute;
+  padding-left: 0px;
+  list-style-type: none;
+  background-color: white;
+  opacity: 0.95;
+}
+
+.search-result > a {
+  padding: 5px;
+  display: block;
+  width: 250px;
+  border: 1px solid lightgrey;
+  color: black;
+}
+
 .logo-img {
   max-width: 80%;
   height: auto;

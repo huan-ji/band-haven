@@ -1,6 +1,10 @@
 class Api::AlbumsController < ApplicationController
   def index
-    @albums = Album.filtered_albums(params["filters"])
+    if params["filters"]
+      @albums = Album.filtered_albums(params["filters"])
+    else
+      @albums = Album.all
+    end
     render :index
   end
 

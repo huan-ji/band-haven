@@ -13,7 +13,13 @@ var resetMessages = function (messages) {
 var receiveUser = function (user) {
   _user = user;
   AuthStore.__emitChange();
+};
+
+var removeUser = function (user) {
+  _user = null;
+  AuthStore.__emitChange();
 }
+
 
 AuthStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
@@ -23,6 +29,9 @@ AuthStore.__onDispatch = function (payload) {
       break;
     case AuthConstants.RECEIVE_USER:
       receiveUser(payload.user);
+      break;
+    case AuthConstants.LOGOUT_USER:
+      removeUser(payload.user);
       break;
   }
 };

@@ -5,10 +5,16 @@ var AppDispatcher = require('../dispatcher/dispatcher');
 
 var ApiActions = {
   receiveAuthMessages: function (messages) {
-    // debugger;
     AppDispatcher.dispatch({
       actionType: AuthConstants.MESSAGES_RECEIVED,
       messages: messages
+    });
+  },
+
+  receiveAllAlbums: function (albums) {
+    AppDispatcher.dispatch({
+      actionType: AlbumConstants.ALL_ALBUMS_RECEIVED,
+      albums: albums
     });
   },
 
@@ -74,7 +80,16 @@ var ApiActions = {
       actionType: AuthConstants.RECEIVE_USER,
       user: user
     });
+  },
+
+  logOutUser: function (user) {
+    AppDispatcher.dispatch({
+      actionType: AuthConstants.LOGOUT_USER,
+      user: user
+    });
   }
+
+
 };
 
 module.exports = ApiActions;

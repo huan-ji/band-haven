@@ -3,6 +3,7 @@ var AppDispatcher = require('../dispatcher/dispatcher');
 var _albums = {};
 var _featuredAlbum = null;
 var _selectedAlbum = null;
+var _searchAlbums = null;
 var _selectedSong = { song: "", playing: false};
 var AlbumStore = new Store(AppDispatcher);
 var AlbumConstants = require('../constants/album_constants');
@@ -53,8 +54,16 @@ var playSwitch = function (playing) {
   AlbumStore.__emitChange();
 }
 
+var searchAlbums = function (albums) {
+  _searchAlbums = albums;
+  AlbumStore.__emitChange();
+}
+
 AlbumStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
+    case AlbumConstants.ALL_ALBUMS_RECEIVED:
+      searchAlbums(payload.albums);
+      break;
     case AlbumConstants.ALBUMS_RECEIVED:
       resetAlbums(payload.albums);
       break;
@@ -73,7 +82,9 @@ AlbumStore.__onDispatch = function (payload) {
   }
 };
 
-
+AlbumStore.allSearch = function () {
+  return _searchAlbums;
+};
 
 AlbumStore.all = function () {
   var returnAlbums = [];

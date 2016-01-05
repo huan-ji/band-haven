@@ -3,7 +3,7 @@ var ApiAction = require('../actions/api_actions.js');
 var ApiUtil = {
   fetchAllAlbums: function () {
     $.get("api/albums", {}, function(albums) {
-      ApiAction.receiveAlbums(albums);
+      ApiAction.receiveAllAlbums(albums);
     });
   },
 
@@ -66,7 +66,7 @@ var ApiUtil = {
     $.ajax({
       url: "sessions",
       type: "DELETE",
-      success: function (results) {
+      success: function (user) {
 
       }
     });
