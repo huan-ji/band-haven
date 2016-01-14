@@ -6,7 +6,7 @@ var DiscoverBar = React.createClass({
   render: function () {
     return (
       <div className="discover-bar">
-        <ScrollLink to="top" spy={true} smooth={true} offset={50} duration={500}>
+        <ScrollLink to="top" spy={true} smooth={true} offset={0} duration={500}>
           <img className="top-img" src="assets/top.png"/>
         </ScrollLink>
         <h3>Discover new music</h3>

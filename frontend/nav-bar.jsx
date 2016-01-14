@@ -37,10 +37,10 @@ var NavBar = React.createClass({
   onScroll: function () {
     if (document.getElementById("discover")) {
       var discoverHeight = document.getElementById("discover").offsetTop;
-      if (document.getElementById("discover") && document.getElementById("discover").offsetTop > 0 && (window.pageYOffset >= document.getElementById("discover").offsetTop - 29) && !this.disappear) {
+      if (document.getElementById("discover") && document.getElementById("discover").offsetTop > 0 && (window.pageYOffset >= document.getElementById("discover").offsetTop - 199) && !this.disappear) {
         this.disappear = true;
         this.setState({ navId: "navbar-closed" });
-      } else if (document.getElementById("discover") && window.pageYOffset < document.getElementById("discover").offsetTop - 30 && this.disappear) {
+      } else if (document.getElementById("discover") && window.pageYOffset < document.getElementById("discover").offsetTop - 200 && this.disappear) {
         this.disappear = false;
         this.setState({ navId: "navbar" })
       }
@@ -64,7 +64,7 @@ var NavBar = React.createClass({
       // this.history.
       return <Link to="/discover" style={{cursor: "pointer"}}>Discover</Link>
     } else {
-      return <ScrollLink style={{cursor: "pointer"}} to="discover" spy={true} smooth={true} offset={50} duration={500}>Discover</ScrollLink>
+      return <ScrollLink style={{cursor: "pointer"}} to="discover" spy={true} smooth={true} offset={0} duration={500}>Discover</ScrollLink>
     }
   },
 
@@ -73,7 +73,7 @@ var NavBar = React.createClass({
     if (location.hash.split("/")[2]) {
       return <Link className="navbar-brand" to="/" style={{cursor: "pointer"}}>{navbarImg}</Link>
     } else {
-      return <ScrollLink className="navbar-brand" style={{cursor: "pointer"}} to="top" spy={true} smooth={true} offset={50} duration={500}>{navbarImg}</ScrollLink>
+      return <ScrollLink className="navbar-brand" style={{cursor: "pointer"}} to="top" spy={true} smooth={true} offset={0} duration={500}>{navbarImg}</ScrollLink>
     }
   },
 
