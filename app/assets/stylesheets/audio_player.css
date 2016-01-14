@@ -40,10 +40,11 @@
 }
 
 #audioplayer2{
-	width: 280px;
+	width: 90%;
 	height: 60px;
 	margin: 50px auto auto auto;
   border: 1px solid lightgrey;
+	position: relative;
 }
 
 #pButton2{
@@ -59,9 +60,14 @@
     cursor:pointer;
 }
 
+#timelinearea {
+	position: relative;
+	display: flex;
+}
+
 #timeline2{
 	position: relative;
-	width: 200px;
+	width: 95%;
 	height: 20px;
 	margin-top: 28px;
   margin-left: 5px;

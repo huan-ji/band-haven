@@ -64,15 +64,18 @@ var FeaturedAlbum = React.createClass({
     var albumLink = "/albums/" + this.state.album.id
     return (
       <div id="myCarousel" className="carousel slide" data-ride="carousel" data-pause="false">
-        <div className="featured-play-btn" onClick={this.handleClickFeature}>
-          <img className={this.state.imgClass} src={this.state.buttonImg}></img>
-        </div>
+
+        <div className="featured-zone">
+          <div className="featured-play-btn" onClick={this.handleClickFeature}>
+            <img className={this.state.imgClass} src={this.state.buttonImg}></img>
+          </div>
 
           <div className="featured-caption" key={this.state.album.id}>
             <h4>Featured Album:</h4>
             <Link className="albumlink" to={albumLink}>{this.state.album.title}</Link><br/>
             By {this.state.album.artist}
           </div>
+        </div>
 
         <ol className="carousel-indicators">
           <li data-target="#myCarousel" data-slide-to="0" className="active"></li>

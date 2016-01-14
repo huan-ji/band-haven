@@ -98,9 +98,11 @@ var CurrentAlbum = React.createClass({
           <script src="./music_player.js"></script>
           <div id="audioplayer2">
             <button id="pButton2" className={this.buttonClass()} onClick={this.play}></button>
-            <div id="timeline2">
-              <div className="nav-bar-songname2">{songTitle}</div>
-              <div id="playhead2"></div>
+            <div id="timelinearea">
+              <div id="timeline2">
+                <div className="nav-bar-songname2">{songTitle}</div>
+                <div id="playhead2"></div>
+              </div>
             </div>
           </div>
 
