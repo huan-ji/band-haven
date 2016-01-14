@@ -2,6 +2,8 @@ var React = require('react');
 var ApiUtil = require('../../util/api_util');
 var AlbumStore = require('../../stores/album');
 var ApiActions = require('../../actions/api_actions');
+var ReactCSS = require('react-addons-css-transition-group');
+var Link = require('react-router').Link;
 
 var FeaturedAlbum = React.createClass({
   getInitialState: function () {
@@ -53,15 +55,18 @@ var FeaturedAlbum = React.createClass({
   },
 
   render: function () {
+    var albumLink = "/albums/" + this.state.album.id
     return (
-      <div id="myCarousel" className="carousel slide" data-ride="carousel">
+      <div id="myCarousel" className="carousel slide" data-ride="carousel" data-pause="false">
         <div className="featured-play-btn" onClick={this.handleClickFeature}>
           <img className={this.state.imgClass} src={this.state.buttonImg}></img>
         </div>
-        <div className="featured-caption">
-          <h4>Featured Album:</h4>
-          {this.state.album.title}
-        </div>
+
+          <div className="featured-caption" key={this.state.album.id}>
+            <h4>Featured Album:</h4>
+            <Link className="albumlink" to={albumLink}>{this.state.album.title}</Link><br/>
+            By {this.state.album.artist}
+          </div>
 
         <ol className="carousel-indicators">
           <li data-target="#myCarousel" data-slide-to="0" className="active"></li>
@@ -72,16 +77,21 @@ var FeaturedAlbum = React.createClass({
 
         <div className="carousel-inner" role="listbox">
           <div className="item active">
-            <img src="http://res.cloudinary.com/dzqfe9334/image/upload/v1450813093/0006428130_0_h0wikv.jpg" alt="1"/>
+            <img src="http://res.cloudinary.com/dzqfe9334/image/upload/v1451763346/0006354568_0_bn0rwh.jpg" alt="1"/>
           </div>
 
-          <div className="item" albumId="2">
-            <img src="http://res.cloudinary.com/dzqfe9334/image/upload/v1451763359/0006482592_0_cac0xb.jpg" alt="2"/>
+          <div className="item">
+            <img src="http://res.cloudinary.com/dzqfe9334/image/upload/v1452731786/0006360714_0_asak4i.jpg" alt="4"/>
           </div>
 
-          <div className="item" albumId="3">
-            <img src="http://res.cloudinary.com/dzqfe9334/image/upload/v1451763346/0006354568_0_bn0rwh.jpg" alt="3"/>
+          <div className="item">
+            <img src="http://res.cloudinary.com/dzqfe9334/image/upload/v1451763359/0006482592_0_cac0xb.jpg" alt="11"/>
           </div>
+
+          <div className="item">
+            <img src="http://res.cloudinary.com/dzqfe9334/image/upload/v1450813093/0006428130_0_h0wikv.jpg" alt="7"/>
+          </div>
+
         </div>
 
         <a className="left carousel-control" href="#myCarousel" role="button" data-slide="prev">

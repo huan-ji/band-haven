@@ -59,25 +59,25 @@ var FilterArea = React.createClass({
       "all genres": "rgb(66, 160, 189)",
       "rock": "rgb(213, 31, 38)",
       "hip-hop/rap": "rgb(53, 100, 161)",
-      "eletronic": "rgb(49, 200, 35)",
+      "electronic": "rgb(49, 200, 35)",
       "pop": "rgb(243, 12, 147)",
-      "r&amp;b/soul": "rgb(77, 58, 120)"
+      "r&b/soul": "rgb(77, 58, 120)"
     }
     var subGenreColors = {
       "all genres": "rgb(67, 144, 168)",
       "rock": "rgb(190, 34, 40)",
       "hip-hop/rap": "rgb(53, 91, 141)",
-      "eletronic": "rgb(49, 177, 37)",
+      "electronic": "rgb(49, 177, 37)",
       "pop": "rgb(217, 17, 134)",
-      "r&amp;b/soul": "rgb(69, 55, 103)"
+      "r&b/soul": "rgb(69, 55, 103)"
     }
     var locationColors = {
       "all genres": "rgb(67, 144, 168)",
       "rock": "rgb(167, 36, 41)",
       "hip-hop/rap": "rgb(52, 82, 121)",
-      "eletronic": "rgb(48, 155, 38)",
+      "electronic": "rgb(48, 155, 38)",
       "pop": "rgb(193, 21, 121)",
-      "r&amp;b/soul": "rgb(62, 51, 86)"
+      "r&b/soul": "rgb(62, 51, 86)"
     }
     var genreStyle = {
       backgroundColor: genreColors[this.state.genreStyle],

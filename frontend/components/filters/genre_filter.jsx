@@ -38,7 +38,7 @@ var GenreFilter = React.createClass({
         selectedText: item.name
       });
     }
-    this.props.callback(element.innerHTML)
+    this.props.callback(item.name)
   },
 
   render: function () {

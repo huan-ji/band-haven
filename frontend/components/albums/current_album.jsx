@@ -37,7 +37,7 @@ var CurrentAlbum = React.createClass({
     } else if (AlbumStore.selectedAlbum() !== null){
       var selectedAlbum = AlbumStore.selectedAlbum();
       var selectedSong = AlbumStore.selectedSong();
-      
+
       // this.state.song = selectedSong;
       this.setState({ album: selectedAlbum, songObj: selectedSong, song: selectedSong.song });
     }
@@ -76,7 +76,7 @@ var CurrentAlbum = React.createClass({
           <img className="current-album-img" src={this.state.album.cover_image}/><br/>
           <div style={{ marginLeft: "20px" }}>
             from the album <Link className="album-link" to={albumLink}>{this.state.album.title}</Link><br/>
-            by artist {this.state.album.artist.username}<br/>
+            by artist {this.state.album.artist}<br/>
           </div>
 
 
@@ -90,19 +90,21 @@ var CurrentAlbum = React.createClass({
     }
 
     return (
-      <div className="current-album">
+      <div className="current-album-wrapper">
+        <div className="current-album">
 
-        {currentAlbum}
+          {currentAlbum}
 
-        <script src="./music_player.js"></script>
-        <div id="audioplayer2">
-          <button id="pButton2" className={this.buttonClass()} onClick={this.play}></button>
-          <div id="timeline2">
-            <div className="nav-bar-songname2">{songTitle}</div>
-            <div id="playhead2"></div>
+          <script src="./music_player.js"></script>
+          <div id="audioplayer2">
+            <button id="pButton2" className={this.buttonClass()} onClick={this.play}></button>
+            <div id="timeline2">
+              <div className="nav-bar-songname2">{songTitle}</div>
+              <div id="playhead2"></div>
+            </div>
           </div>
-        </div>
 
+        </div>
       </div>
     )
   }

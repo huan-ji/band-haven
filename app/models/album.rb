@@ -12,16 +12,16 @@
 #
 
 class Album < ActiveRecord::Base
-  validates :artist_id, :title, :description, presence: true
+  validates :artist, :title, :description, presence: true
 
   has_many :songs
 
   has_many :comments
 
-  belongs_to :artist,
-    class_name: "User",
-    foreign_key: :artist_id,
-    primary_key: :id
+  # belongs_to :artist,
+  #   class_name: "User",
+  #   foreign_key: :artist_id,
+  #   primary_key: :id
 
   belongs_to :fan,
     class_name: "User",

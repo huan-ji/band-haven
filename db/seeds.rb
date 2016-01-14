@@ -12,24 +12,48 @@ SubGenre.delete_all
 SubGenreJoin.delete_all
 Location.delete_all
 LocationJoin.delete_all
-User.create(username:"kkiiji", password_digest:"$2a$10$j0PwrAMIh1XlhcqWNVJM4eb3e0hq2Tk.ExduGOw.RFUfRiCdqAqYq", session_token:"AsN17N4TUqyikz2ESMLFfA", artist: false)
-Album.create(title: "PINK GUY", artist_id: 1, description: "test album 1", cover_image: "https://f1.bcbits.com/img/a0984029365_9.jpg")
-Album.create(title: "Damn Near Grown", artist_id: 1, description: "test album 2", cover_image: "https://f1.bcbits.com/img/a0690813671_9.jpg")
-Album.create(title: "THIRD SIDE OF TAPE", artist_id: 1, description: "test album 3", cover_image: "https://f1.bcbits.com/img/a0812955947_9.jpg")
-Album.create(title: "Black Liberation Theology", artist_id: 1, description: "test album 4", cover_image: "https://f1.bcbits.com/img/a2071164300_9.jpg")
-Album.create(title: "KING OF BUCK", artist_id: 1, description: "test album 5", cover_image: "https://f1.bcbits.com/img/a3398087942_9.jpg")
-Album.create(title: "leftover 2", artist_id: 1, description: "test album 6", cover_image: "https://f1.bcbits.com/img/a0292926281_9.jpg")
+Song.delete_all
+ActiveRecord::Base.connection.reset_pk_sequence!('albums')
+ActiveRecord::Base.connection.reset_pk_sequence!('genres')
+ActiveRecord::Base.connection.reset_pk_sequence!('genre_joins')
+ActiveRecord::Base.connection.reset_pk_sequence!('sub_genres')
+ActiveRecord::Base.connection.reset_pk_sequence!('sub_genre_joins')
+ActiveRecord::Base.connection.reset_pk_sequence!('locations')
+ActiveRecord::Base.connection.reset_pk_sequence!('location_joins')
+ActiveRecord::Base.connection.reset_pk_sequence!('songs')
+
+Album.create(title: "House of Balloons", artist: "The Weeknd", description: "test album 1", cover_image: "http://res.cloudinary.com/dzqfe9334/image/upload/v1452714738/house_of_balloons_mfxrfe.jpg")
+Album.create(title: "Thursday", artist: "The Weeknd", description: "test album 1", cover_image: "http://res.cloudinary.com/dzqfe9334/image/upload/v1452719493/thursday_rndql0.jpg")
+Album.create(title: "Echoes of Silence", artist: "The Weeknd", description: "test album 1", cover_image: "http://res.cloudinary.com/dzqfe9334/image/upload/v1452719578/echoes_ossp8r.jpg")
+Album.create(title: "Doppelganger", artist: "The Fall of Troy", description: "test album 1", cover_image: "http://res.cloudinary.com/dzqfe9334/image/upload/v1452719746/The_Fall_Of_Troy_-_Doppelga%CC%88nger_ji77wa.jpg")
+Album.create(title: "Dethalbum", artist: "Dethklok", description: "test album 1", cover_image: "http://res.cloudinary.com/dzqfe9334/image/upload/v1452719825/The_Dethalbum_Cover_p14ux0.jpg")
+Album.create(title: "PINK GUY", artist: "Pink Guy", description: "test album 1", cover_image: "https://f1.bcbits.com/img/a0984029365_9.jpg")
+Album.create(title: "Cross", artist: "Justice", description: "test album 1", cover_image: "http://res.cloudinary.com/dzqfe9334/image/upload/v1452719928/justice-cross_teuxok.jpg")
+Album.create(title: "Holy Fire", artist: "Foals", description: "test album 1", cover_image: "http://res.cloudinary.com/dzqfe9334/image/upload/v1452720008/foals-holy-fire-e1355344962317_lauhe4.jpg")
+Album.create(title: "Damn Near Grown", artist: "Defcee", description: "test album 2", cover_image: "https://f1.bcbits.com/img/a0690813671_9.jpg")
+Album.create(title: "THIRD SIDE OF TAPE", artist: "Jasiri X", description: "test album 3", cover_image: "https://f1.bcbits.com/img/a0812955947_9.jpg")
+Album.create(title: "Black Liberation Theology", artist: "Lil Ugly Mane", description: "test album 4", cover_image: "https://f1.bcbits.com/img/a2071164300_9.jpg")
+Album.create(title: "KING OF BUCK", artist: "300", description: "test album 5", cover_image: "https://f1.bcbits.com/img/a3398087942_9.jpg")
+Album.create(title: "leftover 2", artist: "Birocratic", description: "test album 6", cover_image: "https://f1.bcbits.com/img/a0292926281_9.jpg")
 Genre.create(name: "rock")
 Genre.create(name: "hip-hop/rap")
-Genre.create(name: "eletronic")
+Genre.create(name: "electronic")
 Genre.create(name: "pop")
 Genre.create(name: "r&b/soul")
-GenreJoin.create(album_id: 1, genre_id: 1)
-GenreJoin.create(album_id: 2, genre_id: 1)
-GenreJoin.create(album_id: 3, genre_id: 2)
-GenreJoin.create(album_id: 4, genre_id: 2)
-GenreJoin.create(album_id: 5, genre_id: 3)
-GenreJoin.create(album_id: 6, genre_id: 4)
+GenreJoin.create(album_id: 1, genre_id: 4)
+GenreJoin.create(album_id: 1, genre_id: 5)
+GenreJoin.create(album_id: 2, genre_id: 5)
+GenreJoin.create(album_id: 3, genre_id: 5)
+GenreJoin.create(album_id: 4, genre_id: 1)
+GenreJoin.create(album_id: 5, genre_id: 1)
+GenreJoin.create(album_id: 6, genre_id: 2)
+GenreJoin.create(album_id: 7, genre_id: 3)
+GenreJoin.create(album_id: 8, genre_id: 1)
+GenreJoin.create(album_id: 9, genre_id: 2)
+GenreJoin.create(album_id: 10, genre_id: 4)
+GenreJoin.create(album_id: 11, genre_id: 2)
+GenreJoin.create(album_id: 12, genre_id: 4)
+GenreJoin.create(album_id: 13, genre_id: 3)
 SubGenre.create(name: "indie", genre_id: 1)
 SubGenre.create(name: "hard rock", genre_id: 1)
 SubGenre.create(name: "psychadelic rock", genre_id: 1)
@@ -40,107 +64,119 @@ SubGenre.create(name: "house", genre_id: 3)
 SubGenre.create(name: "dance", genre_id: 3)
 SubGenre.create(name: "indie pop", genre_id: 4)
 SubGenre.create(name: "new wave", genre_id: 4)
-SubGenreJoin.create(album_id: 1, sub_genre_id: 1)
-SubGenreJoin.create(album_id: 1, sub_genre_id: 2)
-SubGenreJoin.create(album_id: 2, sub_genre_id: 3)
-SubGenreJoin.create(album_id: 2, sub_genre_id: 4)
-SubGenreJoin.create(album_id: 3, sub_genre_id: 5)
-SubGenreJoin.create(album_id: 3, sub_genre_id: 6)
-SubGenreJoin.create(album_id: 4, sub_genre_id: 7)
-SubGenreJoin.create(album_id: 5, sub_genre_id: 8)
-SubGenreJoin.create(album_id: 6, sub_genre_id: 9)
-SubGenreJoin.create(album_id: 6, sub_genre_id: 3)
+SubGenre.create(name: "r&b", genre_id: 5)
+SubGenre.create(name: "contemporary r&b", genre_id: 5)
+SubGenreJoin.create(album_id: 1, sub_genre_id: 11)
+SubGenreJoin.create(album_id: 1, sub_genre_id: 12)
+SubGenreJoin.create(album_id: 1, sub_genre_id: 9)
+SubGenreJoin.create(album_id: 2, sub_genre_id: 11)
+SubGenreJoin.create(album_id: 3, sub_genre_id: 1)
+SubGenreJoin.create(album_id: 3, sub_genre_id: 2)
+SubGenreJoin.create(album_id: 3, sub_genre_id: 3)
+SubGenreJoin.create(album_id: 4, sub_genre_id: 2)
+SubGenreJoin.create(album_id: 5, sub_genre_id: 3)
+SubGenreJoin.create(album_id: 6, sub_genre_id: 4)
+SubGenreJoin.create(album_id: 6, sub_genre_id: 6)
+SubGenreJoin.create(album_id: 7, sub_genre_id: 7)
+SubGenreJoin.create(album_id: 7, sub_genre_id: 8)
+SubGenreJoin.create(album_id: 8, sub_genre_id: 1)
+SubGenreJoin.create(album_id: 9, sub_genre_id: 4)
+SubGenreJoin.create(album_id: 9, sub_genre_id: 5)
+SubGenreJoin.create(album_id: 10, sub_genre_id: 9)
+SubGenreJoin.create(album_id: 11, sub_genre_id: 5)
+SubGenreJoin.create(album_id: 12, sub_genre_id: 10)
+SubGenreJoin.create(album_id: 13, sub_genre_id: 7)
 Location.create(name: "San Diego")
 Location.create(name: "San Francisco")
 Location.create(name: "Los Angeles")
 Location.create(name: "New York")
-LocationJoin.create(album_id: 1, location_id: 1)
-LocationJoin.create(album_id: 2, location_id: 1)
-LocationJoin.create(album_id: 3, location_id: 2)
-LocationJoin.create(album_id: 4, location_id: 2)
-LocationJoin.create(album_id: 5, location_id: 3)
-LocationJoin.create(album_id: 6, location_id: 4)
-Song.create(title: "Promise [Part 2]", lyrics: "Over and gone,
-She waited.
+LocationJoin.create(album_id: 1, location_id: 4)
+LocationJoin.create(album_id: 2, location_id: 4)
+LocationJoin.create(album_id: 3, location_id: 4)
+LocationJoin.create(album_id: 4, location_id: 1)
+LocationJoin.create(album_id: 5, location_id: 2)
+LocationJoin.create(album_id: 6, location_id: 3)
+LocationJoin.create(album_id: 7, location_id: 4)
+LocationJoin.create(album_id: 8, location_id: 1)
+LocationJoin.create(album_id: 9, location_id: 2)
+LocationJoin.create(album_id: 10, location_id: 3)
+LocationJoin.create(album_id: 11, location_id: 1)
+LocationJoin.create(album_id: 12, location_id: 2)
+LocationJoin.create(album_id: 13, location_id: 3)
+Song.create(title: "Wicked Games", lyrics: "", album_id: 1, duration: "5:25", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452714304/05_The_Weeknd_-_Wicked_Games_n1lqpy.mp3", public: true)
+Song.create(title: "High for This", lyrics: "", album_id: 1, duration: "4:07", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452714094/01_The_Weeknd_-_High_For_This_j6hn2i.mp3", public: true)
+Song.create(title: "What You Need", lyrics: "", album_id: 1, duration: "3:16", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452714388/02_The_Weeknd_-_What_You_Need_hgomia.mp3", public: true)
+Song.create(title: "Coming Down", lyrics: "", album_id: 1, duration: "4:55", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452714480/07_The_Weeknd_-_Coming_Down_ih3gnz.mp3", public: true)
+Song.create(title: "The Knowing", lyrics: "", album_id: 1, duration: "5:49", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452714544/09_The_Weeknd_-_The_Knowing_lwypcu.mp3", public: true)
+Song.create(title: "Twenty Eight", lyrics: "", album_id: 1, duration: "4:18", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452714670/10_The_Weeknd_-_Twenty_Eight_vupmyc.mp3", public: true)
 
-(He would travel far to find her,
-Finally she breathed her answer…)
+Song.create(title: "The Zone feat. Drake", lyrics: "", album_id: 2, duration: "6:58", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452714901/04_The_Weeknd_-_The_Zone_feat._Drake_yhk9g3.mp3", public: true)
+Song.create(title: "Thursday", lyrics: "", album_id: 2, duration: "5:20", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452715113/03_The_Weeknd_-_Thursday_raa59r.mp3", public: true)
+Song.create(title: "The Birds Pt. 1", lyrics: "", album_id: 2, duration: "3:34", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452715173/05_The_Weeknd_-_The_Birds_Pt._1_fw8hcg.mp3", public: true)
+Song.create(title: "The Birds Pt. 2", lyrics: "", album_id: 2, duration: "5:50", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452715242/06_The_Weeknd_-_The_Birds_Pt._2_g50f1t.mp3", public: true)
+Song.create(title: "Rolling Stone", lyrics: "", album_id: 2, duration: "3:50", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452715286/08_The_Weeknd_-_Rolling_Stone_gyhv11.mp3", public: true)
+Song.create(title: "Valerie", lyrics: "", album_id: 2, duration: "4:46", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452715292/10_The_Weeknd_-_Valerie_h5uqgq.mp3", public: true)
 
-Over and gone
-A promise kept is all that's left.
-Nothing changes.
+Song.create(title: "XO/The Host", lyrics: "", album_id: 3, duration: "7:24", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452716064/04_The_Weeknd_-_XO_-_The_Host_wnvsmi.mp3", public: true)
+Song.create(title: "The Initiation", lyrics: "", album_id: 3, duration: "4:20", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452716035/05_The_Weeknd_-_Initiation_zaqcj9.mp3", public: true)
+Song.create(title: "The Fall", lyrics: "", album_id: 3, duration: "5:45", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452716044/07_The_Weeknd_-_The_Fall_j8ieut.mp3", public: true)
+Song.create(title: "Next", lyrics: "", album_id: 3, duration: "6:00", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452716049/08_The_Weeknd_-_Next_z111e1.mp3", public: true)
+Song.create(title: "Echoes of Silence", lyrics: "", album_id: 3, duration: "4:08", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452716060/09_The_Weeknd_-_Echoes_Of_Silence_lpfmlx.mp3", public: true)
+Song.create(title: "Till Dawn (Here Comes The Sun)", lyrics: "", album_id: 3, duration: "5:19", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452716052/10_The_Weeknd_-_Till_Dawn_Here_Comes_The_Sun_jbxcce.mp3", public: true)
 
-Over and on,
-over and gone, she…
-over and on
-over and gone… ", album_id: 1, duration: "8:53", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
-Song.create(title: "Unturning", lyrics: "Over and gone,
-She waited.
+Song.create(title: "I Just Got This Symphony Goin", lyrics: "", album_id: 4, duration: "4:09", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452716372/01_I_Just_Got_This_Symphony_Goin_cehsce.mp3", public: true)
+Song.create(title: "Mouths Like Sidewinder Missiles", lyrics: "", album_id: 4, duration: "3:44", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452716383/05_Mouths_Like_Sidewinder_Missiles_vybzbf.mp3", public: true)
+Song.create(title: "F.C.P.R.E.M.I.X", lyrics: "", album_id: 4, duration: "3:57", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452716383/03_F.C.P.R.E.M.I.X._g61uhc.mp3", public: true)
+Song.create(title: "Tom Waits", lyrics: "", album_id: 4, duration: "3:03", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452716406/10_Tom_Waits_y60wva.mp3", public: true)
+Song.create(title: "Whacko Jacko Steals The Elephant", lyrics: "", album_id: 4, duration: "4:50", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452716412/09_Whacko_Jacko_Steals_The_Elephant_wncsi5.mp3", public: true)
+Song.create(title: "Macaulay McCulkin", lyrics: "", album_id: 4, duration: "8:06", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452716464/11_Macaulay_McCulkin_hpmlun.mp3", public: true)
 
-(He would travel far to find her,
-Finally she breathed her answer…)
+Song.create(title: "Awaken", lyrics: "", album_id: 5, duration: "3:37", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452716916/03_Awaken_hy49lc.mp3", public: true)
+Song.create(title: "Bloodrocuted", lyrics: "", album_id: 5, duration: "2:18", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452716909/04_Bloodrocuted_dbq9ff.mp3", public: true)
+Song.create(title: "Lost Vikings", lyrics: "", album_id: 5, duration: "4:28", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452716945/08_The_Lost_Vikings_wtxquk.mp3", public: true)
+Song.create(title: "Thunderhorse", lyrics: "", album_id: 5, duration: "2:45", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452716930/09_Thunderhorse_uu5fbo.mp3", public: true)
+Song.create(title: "Dethharmonic", lyrics: "", album_id: 5, duration: "4:30", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452716945/15_Dethharmonic_sc7e2u.mp3", public: true)
+Song.create(title: "Deththeme", lyrics: "", album_id: 5, duration: "0:34", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452716936/16_Deththeme_dndup0.mp3", public: true)
 
-Over and gone
-A promise kept is all that's left.
-Nothing changes.
+Song.create(title: "Peanutbutter", lyrics: "", album_id: 6, duration: "1:54", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452717411/02_Peanutbutter_idr22u.m4a", public: true)
+Song.create(title: "Birth of b0ss", lyrics: "", album_id: 6, duration: "0:22", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452717414/07_Birth_of_b0ss_oz1gth.m4a", public: true)
+Song.create(title: "Frank Says", lyrics: "", album_id: 6, duration: "3:37", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452717427/14_Frank_Says_hexad4.m4a", public: true)
+Song.create(title: "Loser", lyrics: "", album_id: 6, duration: "1:36", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452717434/24_Loser_oqhdsu.m4a", public: true)
+Song.create(title: "U got a friend", lyrics: "", album_id: 6, duration: "0:48", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452717442/31_U_got_a_frend_jf8lpr.m4a", public: true)
+Song.create(title: "Filthy", lyrics: "", album_id: 6, duration: "2:37", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452717454/36_Filthy_f5brx9.m4a", public: true)
 
-Over and on,
-over and gone, she…
-over and on
-over and gone… ", album_id: 1, duration: "08:53", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
-Song.create(title: "Instinc", lyrics: "", album_id: 1, duration: "08:25", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
-Song.create(title: "Womb (In Memoriam)", lyrics: "", album_id: 1, duration: "07:00", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
-Song.create(title: "Selfsame", lyrics: "", album_id: 1, duration: "02:26", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
-Song.create(title: "Holding Atropos", lyrics: "", album_id: 1, duration: "08:24", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
-Song.create(title: "Keeping Stone: Sound on Fire", lyrics: "", album_id: 1, duration: "04:09", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
-Song.create(title: "Learned", lyrics: "", album_id: 1, duration: "09:22", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
-Song.create(title: "Hunter, Heart & Home", lyrics: "", album_id: 1, duration: "23:15", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
-Song.create(title: "Little Burden", lyrics: "", album_id: 1, duration: "07:46", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
-Song.create(title: "Impatience and Slow Poison", lyrics: "", album_id: 1, duration: "07:46", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
-Song.create(title: "Known", lyrics: "", album_id: 1, duration: "07:02", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
-Song.create(title: "Nightingale's Weave", lyrics: "", album_id: 1, duration: "02:50", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
-Song.create(title: "Eyes for the Change", lyrics: "", album_id: 1, duration: "08:31", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
-Song.create(title: "Keeping Stone: Water Awake", lyrics: "", album_id: 1, duration: "06:19", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
-Song.create(title: "Promise [Part 1]", lyrics: "", album_id: 1, duration: "07:34", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
-Song.create(title: "Promise [Part 2]", lyrics: "Over and gone,
-She waited.
+Song.create(title: "Genesis", lyrics: "", album_id: 7, duration: "3:48", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452717924/01_Genesis_pudqsq.mp3", public: true)
+Song.create(title: "Let There Be Light", lyrics: "", album_id: 7, duration: "4:47", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452717946/02_Let_There_Be_Light_i09fy3.mp3", public: true)
+Song.create(title: "D.A.N.C.E", lyrics: "", album_id: 7, duration: "3:23", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452717922/03_D.A.N.C.E._cxq40y.mp3", public: true)
+Song.create(title: "Valentine", lyrics: "", album_id: 7, duration: "2:51", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452717945/07_Valentine_lcbyu2.mp3", public: true)
+Song.create(title: "Tthhe Ppaarrttyy", lyrics: "", album_id: 7, duration: "3:56", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452717949/08_Tthhee_Ppaarrttyy_yzg7s8.mp3", public: true)
+Song.create(title: "Waters of Nazareth", lyrics: "", album_id: 7, duration: "4:17", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452717963/11_Waters_Of_Nazareth_qtt7hx.mp3", public: true)
+Song.create(title: "One Minute to Midnight", lyrics: "", album_id: 7, duration: "3:02", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452717977/12_One_Minute_To_Midnight_cv5eco.mp3", public: true)
 
-(He would travel far to find her,
-Finally she breathed her answer…)
+Song.create(title: "Inhaler", lyrics: "", album_id: 8, duration: "4:52", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452719214/02_Foals_-_Inhaler_aafnxj.mp3", public: true)
+Song.create(title: "My Number", lyrics: "", album_id: 8, duration: "4:00", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452719207/03_Foals_-_My_Number_ozw4sk.mp3", public: true)
+Song.create(title: "Bad Habit", lyrics: "", album_id: 8, duration: "4:40", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452719231/04_Foals_-_Bad_Habit_c9fneb.mp3", public: true)
+Song.create(title: "Everytime", lyrics: "", album_id: 8, duration: "4:02", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452719228/05_Foals_-_Everytime_wh9hcn.mp3", public: true)
+Song.create(title: "Late Night", lyrics: "", album_id: 8, duration: "4:32", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452719234/06_Foals_-_Late_Night_edhh63.mp3", public: true)
+Song.create(title: "Out Of The Woods", lyrics: "", album_id: 8, duration: "4:45", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452719232/07_Foals_-_Out_Of_The_Woods_lyzk88.mp3", public: true)
 
-Over and gone
-A promise kept is all that's left.
-Nothing changes.
+Song.create(title: "Promise [Part 2]", lyrics: "", album_id: 9, duration: "3:53", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1450739945/The_Weeknd_-_The_Hills_wcpsdm.mp3", public: true)
+Song.create(title: "Unturning", lyrics: "", album_id: 9, duration: "01:53", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452722526/04_Big_Mama_ummrp7.m4a", public: true)
+Song.create(title: "Instinc", lyrics: "", album_id: 9, duration: "02:25", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452722540/13_Balls_kmz5ue.m4a", public: true)
+Song.create(title: "Promise [Part 1]", lyrics: "", album_id: 9, duration: "01:34", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452722546/16_Bad_Words_zwxnec.mp3", public: true)
 
-Over and on,
-over and gone, she…
-over and on
-over and gone… ", album_id: 2, duration: "8:53", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1450739945/The_Weeknd_-_The_Hills_wcpsdm.mp3", public: true)
-Song.create(title: "Unturning", lyrics: "Over and gone,
-She waited.
+Song.create(title: "Womb (In Memoriam)", lyrics: "", album_id: 10, duration: "04:00", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452722909/04_Newjack_wp0hxv.mp3", public: true)
+Song.create(title: "Selfsame", lyrics: "", album_id: 10, duration: "03:26", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452722941/05_Phantom_plt8a3.mp3", public: true)
+Song.create(title: "Holding Atropos", lyrics: "", album_id: 10, duration: "03:24", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452722950/06_Phantom_Pt_II_pnt4ur.mp3", public: true)
 
-(He would travel far to find her,
-Finally she breathed her answer…)
+Song.create(title: "Keeping Stone: Sound on Fire", lyrics: "", album_id: 11, duration: "00:34", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
+Song.create(title: "Learned", lyrics: "", album_id: 11, duration: "02:22", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452722581/22_Ladies_Man_mrbazq.m4a", public: true)
+Song.create(title: "Hunter, Heart & Home", lyrics: "", album_id: 11, duration: "01:15", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452722597/35_Friendzone_gqttpf.m4a", public: true)
 
-Over and gone
-A promise kept is all that's left.
-Nothing changes.
+Song.create(title: "Little Burden", lyrics: "", album_id: 12, duration: "03:46", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452722957/09_Dvno_nrzh1q.mp3", public: true)
+Song.create(title: "Impatience and Slow Poison", lyrics: "", album_id: 12, duration: "02:46", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452722988/10_Stress_lfeslw.mp3", public: true)
+Song.create(title: "Known", lyrics: "", album_id: 12, duration: "04:02", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452717949/08_Tthhee_Ppaarrttyy_yzg7s8.mp3", public: true)
 
-Over and on,
-over and gone, she…
-over and on
-over and gone… ", album_id: 2, duration: "08:53", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
-Song.create(title: "Instinc", lyrics: "", album_id: 2, duration: "08:25", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
-Song.create(title: "Womb (In Memoriam)", lyrics: "", album_id: 2, duration: "07:00", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
-Song.create(title: "Selfsame", lyrics: "", album_id: 2, duration: "02:26", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
-Song.create(title: "Holding Atropos", lyrics: "", album_id: 2, duration: "08:24", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
-Song.create(title: "Keeping Stone: Sound on Fire", lyrics: "", album_id: 2, duration: "04:09", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
-Song.create(title: "Learned", lyrics: "", album_id: 2, duration: "09:22", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
-Song.create(title: "Hunter, Heart & Home", lyrics: "", album_id: 2, duration: "23:15", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
-Song.create(title: "Little Burden", lyrics: "", album_id: 2, duration: "07:46", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
-Song.create(title: "Impatience and Slow Poison", lyrics: "", album_id: 2, duration: "07:46", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
-Song.create(title: "Known", lyrics: "", album_id: 2, duration: "07:02", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
-Song.create(title: "Nightingale's Weave", lyrics: "", album_id: 2, duration: "02:50", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
-Song.create(title: "Eyes for the Change", lyrics: "", album_id: 2, duration: "08:31", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
-Song.create(title: "Keeping Stone: Water Awake", lyrics: "", album_id: 2, duration: "06:19", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
-Song.create(title: "Promise [Part 1]", lyrics: "", album_id: 2, duration: "07:34", song_url: "http://www.alexkatz.me/codepen/music/interlude.mp3", public: true)
+Song.create(title: "Nightingale's Weave", lyrics: "", album_id: 13, duration: "02:50", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452723418/09_Foals_-_Providence_hmuoii.mp3", public: true)
+Song.create(title: "Eyes for the Change", lyrics: "", album_id: 13, duration: "01:31", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452723441/10_Foals_-_Stepson_rpdyfa.mp3", public: true)
+Song.create(title: "Keeping Stone: Water Awake", lyrics: "", album_id: 13, duration: "04:19", song_url: "http://res.cloudinary.com/dzqfe9334/video/upload/v1452723434/11_Foals_-_Moon_otwjk4.mp3", public: true)

@@ -24,6 +24,13 @@ var AlbumDetail = React.createClass({
     }, 600);
     this.listener = AlbumStore.addListener(this.onChange);
     ApiUtil.showSingleAlbum(parseInt(this.props.params.albumId));
+    var bannerArray = [
+      "http://res.cloudinary.com/dzqfe9334/image/upload/v1451763346/0006354568_0_bn0rwh.jpg",
+      "http://res.cloudinary.com/dzqfe9334/image/upload/v1452731786/0006360714_0_asak4i.jpg",
+      "http://res.cloudinary.com/dzqfe9334/image/upload/v1451763359/0006482592_0_cac0xb.jpg",
+      "http://res.cloudinary.com/dzqfe9334/image/upload/v1450813093/0006428130_0_h0wikv.jpg"
+     ]
+    this.bannerUrl = bannerArray[Math.floor(Math.random()*bannerArray.length)];
   },
 
   onChange: function () {
@@ -36,18 +43,25 @@ var AlbumDetail = React.createClass({
 
   render: function () {
     var albumDetail = "";
+
     if (this.state.album) {
       albumDetail = (
         <div style={{ top: this.state.top }} className="album-detail">
-          <div className="album-detail-info container">
-            <div className="col-xs-6">
-              <h3>{this.state.album.title}</h3>
-              <div>By {this.state.album.artist.username}</div>
-              <SongIndex album={this.state.album}/>
-            </div>
 
-            <div className="col-xs-6">
-              <img src={this.state.album.cover_image} className="album-detail-img"/>
+          <div className="album-detail-info container">
+            <div className="album-detail-banner"
+              style={{ backgroundImage: "url(" + this.bannerUrl + ")" }}
+              />
+            <div className="album-detail-detail">
+              <div className="col-xs-6">
+                <h3>{this.state.album.title}</h3>
+                <div>By {this.state.album.artist}</div>
+                <SongIndex album={this.state.album}/>
+              </div>
+
+              <div className="col-xs-6">
+                <img src={this.state.album.cover_image} className="album-detail-img"/>
+              </div>
             </div>
           </div>
         </div>

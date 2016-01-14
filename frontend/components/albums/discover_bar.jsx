@@ -9,7 +9,7 @@ var DiscoverBar = React.createClass({
         <ScrollLink to="top" spy={true} smooth={true} offset={50} duration={500}>
           <img className="top-img" src="assets/top.png"/>
         </ScrollLink>
-        <h3>Discover</h3>
+        <h3>Discover new music</h3>
       </div>
     )
   }

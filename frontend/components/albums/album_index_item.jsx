@@ -56,7 +56,7 @@ var AlbumIndexItem = React.createClass({
         </div>
         <div style={{ marginLeft: "5px" }}>
           <Link to={albumLink} className="album-link">{this.props.album.title}</Link><br/>
-          {this.props.album.artist.username}<br/>
+          {this.props.album.artist}<br/>
         </div>
       </div>
     );

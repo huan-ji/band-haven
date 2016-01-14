@@ -37,10 +37,10 @@ var NavBar = React.createClass({
   onScroll: function () {
     if (document.getElementById("discover")) {
       var discoverHeight = document.getElementById("discover").offsetTop;
-      if (document.getElementById("discover") && document.getElementById("discover").offsetTop > 0 && (window.pageYOffset >= document.getElementById("discover").offsetTop - 15) && !this.disappear) {
+      if (document.getElementById("discover") && document.getElementById("discover").offsetTop > 0 && (window.pageYOffset >= document.getElementById("discover").offsetTop - 29) && !this.disappear) {
         this.disappear = true;
         this.setState({ navId: "navbar-closed" });
-      } else if (document.getElementById("discover") && window.pageYOffset < document.getElementById("discover").offsetTop - 16 && this.disappear) {
+      } else if (document.getElementById("discover") && window.pageYOffset < document.getElementById("discover").offsetTop - 30 && this.disappear) {
         this.disappear = false;
         this.setState({ navId: "navbar" })
       }
@@ -120,7 +120,7 @@ var NavBar = React.createClass({
       })
 
       var options = {
-        keys: ['title', 'artist.username'],
+        keys: ['title', 'artist'],
       };
       var fuse = new Fuse(albums, options);
       var albumResult = fuse.search(this.state.searchText);
@@ -213,7 +213,7 @@ var NavBar = React.createClass({
       albumInfo = (
         <div className="albumInfo">
           <Link className="album-link" to={"/albums/" + this.state.album.id}>{this.state.album.title}</Link><br/>
-          by {this.state.album.artist.username}
+          by {this.state.album.artist}
         </div>
       )
     }
@@ -246,16 +246,17 @@ var NavBar = React.createClass({
         	</audio>
 
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul className="nav navbar-nav">
-              <li className="active">{this.discoverPath()}</li>
+            <ul className="nav navbar-nav" style={{ marginRight: "55px" }}>
+              <li style={{ fontSize: "14pt"}}>{this.discoverPath()}</li>
             </ul>
+
             <form className="navbar-form navbar-left" role="search">
               <div className="form-group">
                 <input type="text" className="form-control"
-                  style={{ width: "250px" }}
+                  style={{ width: "320px" }}
                   value={this.state.searchText}
                   onChange={this.searchChange}
-                  placeholder="Search by Album, Track, or Artist"/>
+                  placeholder="Find Albums by Album, Track, or Artist name"/>
               </div>
               <ul className="search-result">
                 {searchResults}
@@ -272,7 +273,9 @@ var NavBar = React.createClass({
               </div>
               {albumInfo}
             </div>
+
             {authMenu}
+
 
           </div>
         </div>

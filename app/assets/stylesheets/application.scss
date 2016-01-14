@@ -9,6 +9,10 @@ body {
   margin-top: 0px;
 }
 
+#searchform {
+  width: 300px;
+}
+
 .search-result {
   position: absolute;
   padding-left: 0px;
@@ -20,7 +24,7 @@ body {
 .search-result > a {
   padding: 5px;
   display: block;
-  width: 250px;
+  width: 320px;
   border: 1px solid lightgrey;
   color: black;
 }
@@ -39,6 +43,12 @@ body {
 
 .navbar-default .navbar-nav > li > a {
   height: 60px;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+  color: white;
+  background-color: grey;
+  transition: all 0.3s;
 }
 
 .dropdown-menu {
@@ -155,31 +165,38 @@ body {
 }
 
 .front-page-albums {
+  float: left;
   display: inline-flex;
   flex-wrap: wrap;
-  max-width: 70%;
+  max-width: 65%;
   padding-left: 80px;
   padding-top: 10px;
+  height: 520px;
+  overflow: scroll;
 }
 
 .front-page-albums div {
-
   margin: 3px;
 }
 
-.album-link {
-  font-weight: bold;
-  color: black;
+
+.current-album-wrapper {
+  position: relative;
+  display:inline-block;
+  max-width: 33%;
 }
 
 .current-album {
+  margin: auto;
   background-color: white;
-  position: absolute;
-  top: 15px;
-  right: 80px;
+  position: relative;
+  margin-top: 15px;
+  // margin-right: 80px;
+  // margin-bottom: 15px;
+
   padding: 30px;
-  height:520px;
-  width:380px;
+  height:80%;
+  width:80%;
   // display: inline-block;
   border: 1px solid white;
 }
@@ -192,11 +209,15 @@ body {
   height:auto;
 }
 
+.album-link {
+  font-weight: bold;
+  color: black;
+}
+
 .album-index-img {
   flex-basis: 25%;
-  max-width: 90%;
-  height: auto;
-  width: auto;
+  height: 200px;
+  width: 200px;
   cursor: pointer;
   position: relative;
 }
@@ -311,6 +332,7 @@ body {
   background-color: #EEE;
   padding: 20px 0px 20px 0px;
   height: 720px;
+  // overflow: scroll;
 }
 
 .selected-filter {
@@ -371,6 +393,13 @@ body {
 
 }
 
+.album-detail-banner {
+  background-position: bottom;
+  width: 100%;
+  margin: auto;
+  height: 200px;
+}
+
 .album-detail {
   position: absolute;
   background-color: #EEE;
@@ -383,10 +412,17 @@ body {
 .album-detail-info {
   background-color: white;
   margin: auto;
-  width: 55%;
+  width: 60%;
   height: 100%;
+  padding-left: 0px;
+  padding-right: 0px;
+
+}
+
+.album-detail-detail {
   padding-left: 50px;
   padding-right: 50px;
+  padding-top: 30px;
 }
 
 .album-detail-img {
