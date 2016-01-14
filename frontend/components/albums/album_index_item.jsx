@@ -47,12 +47,13 @@ var AlbumIndexItem = React.createClass({
     var albumLink = "/albums/" + this.props.album.id;
     return (
       <div className="album-index-item">
-        <div onClick={this.handleClick}>
+        <div style={{position:"relative"}} onClick={this.handleClick}>
           <img className="album-index-img" src={this.props.album.cover_image}></img>
+
           <span className={this.state.buttonClass}>
             <img className={this.state.imgClass} src={this.state.buttonImg}></img>
           </span>
-          <br/>
+
         </div>
         <div style={{ marginLeft: "5px" }}>
           <Link to={albumLink} className="album-link">{this.props.album.title}</Link><br/>

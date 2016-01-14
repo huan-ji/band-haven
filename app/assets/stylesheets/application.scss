@@ -181,9 +181,10 @@ body {
 
 
 .current-album-wrapper {
+  float: right;
   position: relative;
   display:inline-block;
-  max-width: 33%;
+  width: 33%;
 }
 
 .current-album {
@@ -205,7 +206,7 @@ body {
   display:block;
   margin-left: auto;
   margin-right: auto;
-  width: 90%;
+  width: 100%;
   height:auto;
 }
 
@@ -250,8 +251,8 @@ body {
   position: absolute;
   width: 74px;
   height: 54px;
-  left: 28%;
-  top: 30%;
+  left: 32%;
+  top: 35%;
   opacity: 0.01;
   transition: 0.2s;
   background-color: black;
@@ -262,8 +263,8 @@ body {
   position: absolute;
   width: 74px;
   height: 54px;
-  left: 28%;
-  top: 30%;
+  left: 32%;
+  top: 35%;
   opacity: 0.7;
   transition: 0.2s;
   background-color: black;
@@ -391,6 +392,12 @@ body {
   position: relative;
   margin: 0px;
 
+}
+
+.album-index-item:after {
+  content: "";
+  display: block;
+  clear: both;
 }
 
 .album-detail-banner {
