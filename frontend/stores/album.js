@@ -42,7 +42,7 @@ var selectAlbum = function (album) {
 }
 
 var selectSong = function (song) {
-  if (_selectedAlbum === null && song.album_id === _featuredAlbum.id) {
+  if (_selectedAlbum === null && ((_featuredAlbum && song.album_id === _featuredAlbum.id) || (_showAlbum && song.album_id === _showAlbum.id))) {
     _selectedAlbum = _featuredAlbum;
   }
 
@@ -114,6 +114,7 @@ AlbumStore.showAlbum = function () {
 }
 
 AlbumStore.selectedAlbum = function () {
+  // debugger;
   return _selectedAlbum;
 }
 

@@ -169,6 +169,11 @@ var NavBar = React.createClass({
     ApiUtil.fetchAllAlbums();
   },
 
+  eraseResult: function () {
+    debugger;
+    this.setState({ searchText: "" })
+  },
+
   render: function () {
     var modal = "";
     if (this.state.auth) {
@@ -224,7 +229,7 @@ var NavBar = React.createClass({
       searchResults = this.state.searchResults.map(function (result) {
         var resultLink = "/albums/" + result.id
         return (
-          <Link to={resultLink}>{result.title}<br/></Link>
+          <Link to={resultLink}><div>{result.title}</div></Link>
         )
       })
     }
@@ -258,7 +263,7 @@ var NavBar = React.createClass({
                   onChange={this.searchChange}
                   placeholder="Find Albums by Album, Track, or Artist name"/>
               </div>
-              <ul className="search-result">
+              <ul onClick={this.eraseResult} className="search-result">
                 {searchResults}
               </ul>
             </form>
