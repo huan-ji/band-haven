@@ -28,9 +28,9 @@ var SongIndexItem = React.createClass({
 
   render: function () {
     // debugger;
-    var songClass = (this.state.selectedSong.song === this.props.song ? "selected" : "unselected");
-    var imgUrl = (this.state.selectedSong.playing && this.state.selectedSong.song === this.props.song ? "assets/pause2.png" : "assets/play2.png");
-    var imgClass = (this.state.selectedSong.playing && this.state.selectedSong.song === this.props.song ? "black-pause-img" : "black-play-img");
+    var songClass = (this.state.selectedSong.song.id === this.props.song.id ? "selected" : "unselected");
+    var imgUrl = (this.state.selectedSong.playing && this.state.selectedSong.song.id === this.props.song.id ? "assets/pause2.png" : "assets/play2.png");
+    var imgClass = (this.state.selectedSong.playing && this.state.selectedSong.song.id === this.props.song.id ? "black-pause-img" : "black-play-img");
 
     return (
       <li className="song-index-item">

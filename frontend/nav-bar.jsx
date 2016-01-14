@@ -160,7 +160,7 @@ var NavBar = React.createClass({
 
   play: function () {
     var playing = !this.state.song.playing;
-    ApiActions.playSwitch(playing);
+    if (this.state.song.song !== "") ApiActions.playSwitch(playing);
   },
 
   searchChange: function (e) {
