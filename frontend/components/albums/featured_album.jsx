@@ -16,18 +16,24 @@ var FeaturedAlbum = React.createClass({
   },
 
   componentDidMount: function () {
+
     this.listener = AlbumStore.addListener(this.onChange);
 
     var initialAlbumId = parseInt(document.getElementsByClassName("item active")[0].children[0].alt);
     ApiUtil.fetchSingleAlbum(initialAlbumId);
-    $('#myCarousel').on('slid.bs.carousel', function () {
-      var featuredAlbumId = parseInt(document.getElementsByClassName("item active")[0].children[0].alt);
-      ApiUtil.fetchSingleAlbum(featuredAlbumId);
-    })
+
+    $('#myCarousel').on('slid.bs.carousel', this.carouselHandler);
+    $('#myCarousel').carousel({ interval: 5000 })
+  },
+
+  carouselHandler: function () {
+    var featuredAlbumId = parseInt(document.getElementsByClassName("item active")[0].children[0].alt);
+    ApiUtil.fetchSingleAlbum(featuredAlbumId);
   },
 
   componentWillUnmount: function () {
     this.listener.remove();
+    $('#myCarousel').off('slid.bs.carousel', this.carouselHandler);
   },
 
   onChange: function () {
