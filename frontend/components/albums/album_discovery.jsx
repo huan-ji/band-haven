@@ -5,7 +5,7 @@ var CurrentAlbum = require('./current_album');
 var AlbumDiscovery = React.createClass({
   render: function () {
     return (
-      <div style={{ position: "relative" }}>
+      <div className="album-area">
         <AlbumIndex/>
         <CurrentAlbum/>
       </div>

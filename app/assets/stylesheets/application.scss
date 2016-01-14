@@ -201,10 +201,14 @@ body {
   max-height: 100%;
 }
 
-.current-album-wrapper:after {
+.album-area:after {
   content: "";
   display: block;
   clear: both;
+}
+
+.album-area {
+  position: relative;
 }
 
 .current-album {
