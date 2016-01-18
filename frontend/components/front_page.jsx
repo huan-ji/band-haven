@@ -1,6 +1,7 @@
 var React = require('react');
 var Auth = require('./auth/auth_comp');
 var ApiUtil = require('../util/api_util');
+var ApiActions = require('../actions/api_actions');
 var AlbumIndex = require('./albums/album_index');
 var FilterArea = require('./filters/filter_area');
 var History = require('react-router').History;
@@ -37,6 +38,7 @@ var FrontPage = React.createClass({
     // debugger;
     var path = this.props.location.pathname;
     if (path === "/discover") {
+      ApiActions.setDiscover(false);
       var discover = document.getElementById("discover");
       var height = discover.offsetTop;
       window.scrollTo(0, height);

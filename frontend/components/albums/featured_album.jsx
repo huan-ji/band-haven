@@ -72,8 +72,14 @@ var FeaturedAlbum = React.createClass({
 
           <div className="featured-caption" key={this.state.album.id}>
             <h4>Featured Album:</h4>
-            <Link className="albumlink" to={albumLink}>{this.state.album.title}</Link><br/>
-            By {this.state.album.artist}
+            <ReactCSS transitionName="album-transition" transitionAppear={true}
+              transitionAppearTimeout={600}
+              transitionEnterTimeout={600} transitionLeaveTimeout={100}>
+              <div key={this.state.album.id}>
+                <Link className="albumlink" to={albumLink}>{this.state.album.title}</Link><br/>
+                By {this.state.album.artist}
+              </div>
+            </ReactCSS>
           </div>
         </div>
 

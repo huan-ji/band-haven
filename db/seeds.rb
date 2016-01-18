@@ -24,7 +24,7 @@ ActiveRecord::Base.connection.reset_pk_sequence!('songs')
 
 
 Album.create(title: "Thursday", artist: "The Weeknd", description: "test album 1", cover_image: "http://res.cloudinary.com/dzqfe9334/image/upload/v1452719493/thursday_rndql0.jpg")
-Album.create(title: "House of Balloons", artist: "The Weeknd", description: "test album 1", cover_image: "http://res.cloudinary.com/dzqfe9334/image/upload/v1452714738/house_of_balloons_mfxrfe.jpg")
+Album.create(title: "House of Balloons", artist: "The Weeknd", description: "test album 1", cover_image: "http://res.cloudinary.com/dzqfe9334/image/upload/v1453075599/house_ia8r95.jpg")
 Album.create(title: "Echoes of Silence", artist: "The Weeknd", description: "test album 1", cover_image: "http://res.cloudinary.com/dzqfe9334/image/upload/v1452719578/echoes_ossp8r.jpg")
 Album.create(title: "Doppelganger", artist: "The Fall of Troy", description: "test album 1", cover_image: "http://res.cloudinary.com/dzqfe9334/image/upload/v1452719746/The_Fall_Of_Troy_-_Doppelga%CC%88nger_ji77wa.jpg")
 Album.create(title: "Dethalbum", artist: "Dethklok", description: "test album 1", cover_image: "http://res.cloudinary.com/dzqfe9334/image/upload/v1452719825/The_Dethalbum_Cover_p14ux0.jpg")
@@ -32,7 +32,7 @@ Album.create(title: "PINK GUY", artist: "Pink Guy", description: "test album 1",
 Album.create(title: "Cross", artist: "Justice", description: "test album 1", cover_image: "http://res.cloudinary.com/dzqfe9334/image/upload/v1452719928/justice-cross_teuxok.jpg")
 Album.create(title: "Holy Fire", artist: "Foals", description: "test album 1", cover_image: "http://res.cloudinary.com/dzqfe9334/image/upload/v1452720008/foals-holy-fire-e1355344962317_lauhe4.jpg")
 Album.create(title: "Damn Near Grown", artist: "Defcee", description: "test album 2", cover_image: "https://f1.bcbits.com/img/a0690813671_9.jpg")
-Album.create(title: "THIRD SIDE OF TAPE", artist: "Jasiri X", description: "test album 3", cover_image: "https://f1.bcbits.com/img/a0812955947_9.jpg")
+Album.create(title: "THIRD SIDE OF TAPE", artist: "Jasiri X", description: "test album 3", cover_image: "http://res.cloudinary.com/dzqfe9334/image/upload/v1453074688/a3379442574_5_ikfs42.jpg")
 Album.create(title: "Black Liberation Theology", artist: "Lil Ugly Mane", description: "test album 4", cover_image: "https://f1.bcbits.com/img/a2071164300_9.jpg")
 Album.create(title: "KING OF BUCK", artist: "300", description: "test album 5", cover_image: "https://f1.bcbits.com/img/a3398087942_9.jpg")
 Album.create(title: "leftover 2", artist: "Birocratic", description: "test album 6", cover_image: "https://f1.bcbits.com/img/a0292926281_9.jpg")

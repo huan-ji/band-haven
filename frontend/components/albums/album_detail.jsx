@@ -2,6 +2,7 @@ var React = require('react');
 var ReactCSS = require('react-addons-css-transition-group');
 var History = require('react-router').History;
 var AlbumStore = require('../../stores/album');
+var DiscoverStore = require('../../stores/discover');
 var SongIndex = require('../songs/song_index');
 var ApiActions = require('../../actions/api_actions');
 var ApiUtil = require('../../util/api_util');
@@ -16,7 +17,14 @@ var AlbumDetail = React.createClass({
     }
   },
 
+  handleDiscover: function () {
+    if (DiscoverStore.discover()) {
+      this.setState({ top: 869 })
+    }
+  },
+
   componentDidMount: function () {
+    this.discoverListener = DiscoverStore.addListener(this.handleDiscover);
     var that = this;
     setTimeout(function () {
       that.setState({ top: "60" });
@@ -39,6 +47,7 @@ var AlbumDetail = React.createClass({
 
   componentWillUnmount: function () {
     this.listener.remove();
+    this.discoverListener.remove();
   },
 
   render: function () {

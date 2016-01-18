@@ -397,6 +397,16 @@ body {
   height: 0px;
 }
 
+.album-transition-appear {
+  opacity: 0.01;
+  transition: all 600ms;
+}
+
+.album-transition-appear.album-transition-appear-active {
+  opacity: 1;
+  transition: all 600ms;
+}
+
 .album-transition-enter {
   opacity: 0.01;
   transition: all 600ms;
@@ -481,7 +491,7 @@ body {
 .pageSwap-leave.pageSwap-leave-active {
 
   transform: translate3d(-100%, 0, 0);
-  transition: all 600ms;
+  transition: all ease-out 600ms;
 }
 
 .pageSwap-enter {
@@ -500,7 +510,7 @@ body {
   width: 100%;
   height: 100%;
   transform: translate3d(0, 0, 0);
-  transition: all 600ms;
+  transition: all ease-out 600ms;
 
 }
 
@@ -514,7 +524,7 @@ body {
 
 .reversePageSwap-leave.reversePageSwap-leave-active {
   transform: translate3d(100%, 0, 0);
-  transition: all 600ms;
+  transition: all ease-out 600ms;
 }
 
 .reversePageSwap-enter {
@@ -523,7 +533,7 @@ body {
 
 .reversePageSwap-enter.reversePageSwap-enter-active {
   transform: translate3d(0, 0, 0);
-  transition: all 600ms;
+  transition: all ease-out 600ms;
 }
 
 

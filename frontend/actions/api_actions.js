@@ -93,6 +93,13 @@ var ApiActions = {
     AppDispatcher.dispatch({
       actionType: AuthConstants.LOGOUT_USER,
     });
+  },
+
+  setDiscover: function (discover) {
+    AppDispatcher.dispatch({
+      actionType: "SET_DISCOVER",
+      discover: discover
+    })
   }
 
 

@@ -14,6 +14,7 @@ var Player = require('./components/albums/music_player');
 var ApiActions = require('./actions/api_actions');
 var AlbumStore = require('./stores/album');
 var AuthStore = require('./stores/auth');
+var DiscoverStore = require('./stores/discover');
 var Fuse = require('fuse.js');
 
 var NavBar = React.createClass({
@@ -60,11 +61,20 @@ var NavBar = React.createClass({
 
   discoverPath: function () {
     if (location.hash.split("/")[2]) {
-      // debugger;
-      // this.history.
-      return <Link to="/discover" style={{cursor: "pointer"}}>Discover</Link>
+      return <a style={{cursor: "pointer"}} onClick={this.discoverAction}>Discover</a>
     } else {
       return <ScrollLink style={{cursor: "pointer"}} to="discover" spy={true} smooth={true} offset={0} duration={500}>Discover</ScrollLink>
+    }
+  },
+
+  discoverAction: function (e) {
+    e.preventDefault();
+    ApiActions.setDiscover(true);
+  },
+
+  handleDiscover: function () {
+    if (DiscoverStore.discover()) {
+      this.history.push("/discover");
     }
   },
 
@@ -101,12 +111,14 @@ var NavBar = React.createClass({
   componentDidMount: function () {
     this.listener = AlbumStore.addListener(this.onChange);
     this.authListener = AuthStore.addListener(this.authChange);
+    this.discoverListener = DiscoverStore.addListener(this.handleDiscover);
     this.checkAuth();
   },
 
   componentWillUnmount: function () {
     this.listener.remove();
     this.authListener.remove();
+    this.discoverListener.remove();
   },
 
   onChange: function () {
@@ -121,12 +133,14 @@ var NavBar = React.createClass({
 
       var options = {
         keys: ['title', 'artist'],
+        threshold: 0.3
       };
       var fuse = new Fuse(albums, options);
       var albumResult = fuse.search(this.state.searchText);
 
       var options2 = {
-        keys: ['title']
+        keys: ['title'],
+        threshold: 0.3
       };
 
       var fuse2 = new Fuse(songs, options2);

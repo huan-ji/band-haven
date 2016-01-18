@@ -38,8 +38,8 @@ var App = React.createClass({
 var routes = (
   <Route path="/" component={App}>
     <IndexRoute component={FrontPage}/>
-    <Route path="discover" component={FrontPage}/>
     <Route path="albums/:albumId" component={AlbumDetail}/>
+    <Route path="discover" component={FrontPage}/>
   </Route>
 );
 
