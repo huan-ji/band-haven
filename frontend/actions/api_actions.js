@@ -100,6 +100,13 @@ var ApiActions = {
       actionType: "SET_DISCOVER",
       discover: discover
     })
+  },
+
+  setDiscoverHeight: function (height) {
+    AppDispatcher.dispatch({
+      actionType: "SET_DISCOVER_HEIGHT",
+      height: height
+    })
   }
 
 

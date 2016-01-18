@@ -1,8 +1,10 @@
 var React = require('react');
 var Scroll = require('react-scroll');
 var ScrollLink = Scroll.Link;
+var ApiActions = require('../../actions/api_actions');
 
 var DiscoverBar = React.createClass({
+
   render: function () {
     return (
       <div className="discover-bar">

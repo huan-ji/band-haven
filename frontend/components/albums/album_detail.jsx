@@ -19,7 +19,7 @@ var AlbumDetail = React.createClass({
 
   handleDiscover: function () {
     if (DiscoverStore.discover()) {
-      this.setState({ top: 869 })
+      this.setState({ top: window.innerWidth * 810 / 1440 + 60 })
     }
   },
 

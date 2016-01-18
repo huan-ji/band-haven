@@ -35,7 +35,6 @@ var FrontPage = React.createClass({
     this.scrollEvent.register('end', function(to, element) {
     });
 
-    // debugger;
     var path = this.props.location.pathname;
     if (path === "/discover") {
       ApiActions.setDiscover(false);
