@@ -32,7 +32,7 @@ var showAlbum = function (album) {
 var selectAlbum = function (album) {
   _selectedAlbum = album;
   var song = album.songs[0];
-  if (_selectedSong.song === song) {
+  if (_selectedSong.song.id === song.id) {
     _selectedSong.playing = !_selectedSong.playing;
   } else {
     _selectedSong.song = song;
@@ -46,7 +46,7 @@ var selectSong = function (song) {
     _selectedAlbum = _featuredAlbum;
   }
 
-  if (_selectedSong.song === song) {
+  if (_selectedSong.song.id === song.id) {
     _selectedSong.playing = !_selectedSong.playing;
   } else {
     _selectedSong.song = song;

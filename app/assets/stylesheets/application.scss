@@ -399,12 +399,12 @@ body {
 
 .album-transition-appear {
   opacity: 0.01;
-  transition: all 600ms;
+  transition: all ease-in 200ms;
 }
 
 .album-transition-appear.album-transition-appear-active {
   opacity: 1;
-  transition: all 600ms;
+  transition: all ease-in 200ms;
 }
 
 .album-transition-enter {
