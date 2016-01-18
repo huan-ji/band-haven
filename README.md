@@ -1,6 +1,6 @@
 # BandHaven
 
-[bandhaven.xyzs][live]
+[bandhaven.xyz][live]
 
 [live]: https://bandhaven.xyz/
 
