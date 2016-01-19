@@ -55,7 +55,8 @@ var NavBar = React.createClass({
     ApiUtil.checkAuth();
   },
 
-  handleLogOut: function () {
+  handleLogOut: function (e) {
+    e.preventDefault();
     ApiUtil.signOutUser();
   },
 
@@ -188,6 +189,10 @@ var NavBar = React.createClass({
     this.setState({ searchText: "" })
   },
 
+  doNothing: function (e) {
+    e.preventDefault();
+  },
+
   render: function () {
     var modal = "";
     if (this.state.auth) {
@@ -199,7 +204,10 @@ var NavBar = React.createClass({
       authMenu = (
         <ul className="nav navbar-nav navbar-right">
           <li>
-            <a href="#" onClick={this.handleLogOut}>Log Out</a>
+            <a onClick={this.doNothing} style={{ cursor: "default" }}>{this.state.user.username}</a>
+          </li>
+          <li>
+            <a onClick={this.handleLogOut}>Log Out</a>
           </li>
         </ul>
       )
@@ -265,17 +273,17 @@ var NavBar = React.createClass({
         	</audio>
 
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul className="nav navbar-nav" style={{ marginRight: "55px" }}>
+            <ul className="nav navbar-nav" style={{ marginRight: "40px" }}>
               <li style={{ fontSize: "14pt"}}>{this.discoverPath()}</li>
             </ul>
 
             <form className="navbar-form navbar-left" role="search">
               <div className="form-group">
                 <input type="text" className="form-control"
-                  style={{ width: "320px" }}
+                  style={{ width: "200px" }}
                   value={this.state.searchText}
                   onChange={this.searchChange}
-                  placeholder="Find Albums by Album, Track, or Artist name"/>
+                  placeholder="Search for Albums"/>
               </div>
               <ul onClick={this.eraseResult} className="search-result">
                 {searchResults}
@@ -283,17 +291,17 @@ var NavBar = React.createClass({
             </form>
 
 
-            <div id="audioplayer">
+            <div id="audioplayer" className="navbar-center">
             	<button id="pButton" className={this.buttonClass()} onClick={this.play}></button>
               <div id="timeline">
                 <div className="nav-bar-songname">{songName}</div>
           		  <div id="playhead"></div>
-
               </div>
               {albumInfo}
             </div>
 
             {authMenu}
+
 
 
           </div>

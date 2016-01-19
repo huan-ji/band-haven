@@ -29,7 +29,7 @@ body {
 .search-result > a {
   padding: 5px;
   display: block;
-  width: 320px;
+  width: 200px;
   border: 1px solid lightgrey;
   color: black;
 }
@@ -74,7 +74,7 @@ body {
 
 .nav-bar-songname {
   position:absolute;
-  top: 5px;
+  bottom: 15px;
 }
 
 .nav-bar-songname2 {
@@ -87,7 +87,7 @@ body {
 .featured-zone {
   position: absolute;
   top: 60%;
-  left: 25%;
+  left: 20%;
   z-index: 1000;
   display: inline-flex;
 }
@@ -107,6 +107,7 @@ body {
 
 .featured-play-btn {
   background-color: #149CED;
+  opacity: 0.8;
   position: relative;
   width: 150px;
   height: 100px;
@@ -570,7 +571,6 @@ body {
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
   font-weight: normal;
-  font-family: "Source Sans Pro";
   border: 1px solid #909090;
 
   -webkit-transition: all .3s ease;
@@ -596,7 +596,6 @@ body {
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
   font-weight: normal;
-  font-family: "Source Sans Pro";
   border: 1px solid #909090;
 
   -webkit-transition: all .3s ease;

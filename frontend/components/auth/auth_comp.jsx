@@ -46,7 +46,7 @@ var Auth = React.createClass({
   guest: function (e) {
     e.preventDefault();
     var user = {
-      username: "guest",
+      username: "Guest",
       password: "password",
       artist: false
     };

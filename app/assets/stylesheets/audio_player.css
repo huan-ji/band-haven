@@ -1,6 +1,6 @@
 #audioplayer{
-	display: inline;
-	width: 280px;
+	display: inline-flex;
+	width: auto;
 	height: 60px;
 }
 
@@ -14,21 +14,20 @@
     float:left;
     outline:none;
     cursor:pointer;
-		margin-left: 5px;
 }
 
 .play{background: url('http://www.alexkatz.me/codepen/images/play.png') ;}
 .pause{background: url('http://www.alexkatz.me/codepen/images/pause.png') ;}
 
 #timeline{
-	width: 300px;
+	width: 250px;
 	height: 10px;
 	margin-top: 28px;
   margin-left: 5px;
 	float: left;
 	border-radius: 15px;
 	background: rgba(0,0,0,.3);
-
+	position: relative;
 }
 #playhead{
 	width: 18px;
