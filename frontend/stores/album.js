@@ -42,8 +42,12 @@ var selectAlbum = function (album) {
 }
 
 var selectSong = function (song) {
-  if (_selectedAlbum === null && ((_featuredAlbum && song.album_id === _featuredAlbum.id) || (_showAlbum && song.album_id === _showAlbum.id))) {
+  if (_featuredAlbum && song.album_id === _featuredAlbum.id) {
     _selectedAlbum = _featuredAlbum;
+  }
+
+  if (_showAlbum && song.album_id === _showAlbum.id) {
+    _selectedAlbum = _showAlbum;
   }
 
   if (_selectedSong.song.id === song.id) {
