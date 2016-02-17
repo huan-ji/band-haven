@@ -95,19 +95,19 @@ var ApiActions = {
     });
   },
 
-  setDiscover: function (discover) {
+  setNavigateDiscover: function (discover) {
     AppDispatcher.dispatch({
-      actionType: "SET_DISCOVER",
+      actionType: "SET_NAVIGATE_DISCOVER",
       discover: discover
     })
   },
 
-  setDiscoverHeight: function (height) {
-    AppDispatcher.dispatch({
-      actionType: "SET_DISCOVER_HEIGHT",
-      height: height
-    })
-  }
+  // setDiscoverHeight: function (height) {
+  //   AppDispatcher.dispatch({
+  //     actionType: "SET_DISCOVER_HEIGHT",
+  //     height: height
+  //   })
+  // }
 
 
 };

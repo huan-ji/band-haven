@@ -10,7 +10,6 @@ var ApiUtil = require('../../util/api_util');
 var AlbumDetail = React.createClass({
   mixins: [History],
   getInitialState: function () {
-    // debugger;
     return {
       top: this.props.style.top,
       album: null
@@ -18,20 +17,46 @@ var AlbumDetail = React.createClass({
   },
 
   handleDiscover: function () {
-    if (DiscoverStore.discover()) {
-      this.setState({ top: window.innerWidth * 810 / 1440 + 60 })
+    if (DiscoverStore.navigateDiscover()) {
+      // Featured background set to show 100% width, therefore can use its height to
+      // width ratio to find how to position album detail page during transition
+      var featuredBGHeight = 810
+      var featuredBGWidth = 1440
+      var featuredBackgroundRatio = featuredBGHeight / featuredBGWidth
+      var navbarHeight = 60
+      this.setState({
+        top: window.innerWidth * featuredBackgroundRatio + navbarHeight
+      })
     }
   },
 
   componentDidMount: function () {
     this.discoverListener = DiscoverStore.addListener(this.handleDiscover);
+    this.albumListener = AlbumStore.addListener(this.onChange);
+
+    this.closeTopPositionGap();
+    ApiUtil.showSingleAlbum(parseInt(this.props.params.albumId));
+    this.selectBannerImg();
+  },
+
+  componentWillUnmount: function () {
+    this.albumListener.remove();
+    this.discoverListener.remove();
+  },
+
+  onChange: function () {
+    this.setState({ album: AlbumStore.showAlbum() });
+  },
+
+  closeTopPositionGap: function () {
     var that = this;
     setTimeout(function () {
       that.setState({ top: "60" });
       window.scrollTo(0, 0);
     }, 600);
-    this.listener = AlbumStore.addListener(this.onChange);
-    ApiUtil.showSingleAlbum(parseInt(this.props.params.albumId));
+  },
+
+  selectBannerImg: function () {
     var bannerArray = [
       "http://res.cloudinary.com/dzqfe9334/image/upload/v1451763346/0006354568_0_bn0rwh.jpg",
       "http://res.cloudinary.com/dzqfe9334/image/upload/v1452731786/0006360714_0_asak4i.jpg",
@@ -41,26 +66,15 @@ var AlbumDetail = React.createClass({
     this.bannerUrl = bannerArray[Math.floor(Math.random()*bannerArray.length)];
   },
 
-  onChange: function () {
-    this.setState({ album: AlbumStore.showAlbum() });
-  },
-
-  componentWillUnmount: function () {
-    this.listener.remove();
-    this.discoverListener.remove();
-  },
-
   render: function () {
     var albumDetail = "";
 
     if (this.state.album) {
       albumDetail = (
         <div style={{ top: this.state.top }} className="album-detail">
-
           <div className="album-detail-info container">
             <div className="album-detail-banner"
-              style={{ backgroundImage: "url(" + this.bannerUrl + ")" }}
-              />
+              style={{ backgroundImage: "url(" + this.bannerUrl + ")" }}/>
             <div className="album-detail-detail">
               <div className="col-xs-6">
                 <h3>{this.state.album.title}</h3>
@@ -76,7 +90,6 @@ var AlbumDetail = React.createClass({
         </div>
       )
     }
-    // debugger;
     return (
       <div>
         {albumDetail}

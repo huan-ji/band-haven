@@ -4,7 +4,7 @@ var FilterStore = require('../../stores/filter');
 var ApiUtil = require('../../util/api_util');
 var ReactCSS = require('react-addons-css-transition-group');
 
-var GenreFilter = React.createClass({
+var AlbumFilter = React.createClass({
   getInitialState: function () {
     return {
       filters: [],
@@ -63,7 +63,7 @@ var GenreFilter = React.createClass({
       this.allFilter = <FilterItem item={allObj} selected={selected} key="100" callback={this.filterCallback}/>
       filters.unshift(this.allFilter)
 
-      content = <div className="filter-row" style={this.props.testStyle}>{filters}</div>;
+      content = <div className="filter-row" style={this.props.filterStyle}>{filters}</div>;
     }
 
     return (
@@ -75,4 +75,4 @@ var GenreFilter = React.createClass({
 
 });
 
-module.exports = GenreFilter;
+module.exports = AlbumFilter;

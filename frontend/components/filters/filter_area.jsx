@@ -1,7 +1,5 @@
 var React = require('react');
-var GenreFilter = require('./genre_filter');
-var SubGenreFilter = require('./sub_genre_filter');
-var LocationFilter = require('./location_filter');
+var AlbumFilter = require('./album_filter');
 var ApiUtil = require('../../util/api_util');
 var FilterStore = require('../../stores/filter');
 
@@ -17,14 +15,12 @@ var FilterArea = React.createClass({
 
   genreCallback: function (filter) {
     this.genre = filter;
-    // debugger;
     var filterObj = {
       genre: this.genre,
       sub_genre: this.subGenre,
       location: this.location
     };
     this.changeColor(filter);
-    // debugger;
     ApiUtil.fetchFilteredSubGenres(filter)
     ApiUtil.fetchFilteredAlbums(filterObj);
   },
@@ -93,26 +89,25 @@ var FilterArea = React.createClass({
       backgroundColor: locationColors[this.state.genreStyle],
       transition: "all 0.2s, text-indent 0.1ms",
     };
-    // debugger;
 
     return (
       <div className="filter-area">
-        <GenreFilter
+        <AlbumFilter
           apiFetch={ApiUtil.fetchAllGenres}
           storeAll={FilterStore.allGenres}
           callback={this.genreCallback}
-          testStyle={genreStyle}
+          filterStyle={genreStyle}
           filterType="genres" />
-        <GenreFilter
+        <AlbumFilter
           storeAll={FilterStore.allSubGenres}
           callback={this.subGenreCallback}
-          testStyle={subGenreStyle}
+          filterStyle={subGenreStyle}
           filterType="sub-genres" />
-        <GenreFilter
+        <AlbumFilter
           apiFetch={ApiUtil.fetchAllLocations}
           storeAll={FilterStore.allLocations}
           callback={this.locationCallback}
-          testStyle={locationStyle}
+          filterStyle={locationStyle}
           filterType="locations" />
       </div>
     );

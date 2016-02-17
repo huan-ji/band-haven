@@ -13,14 +13,12 @@ var AlbumIndex = React.createClass({
   },
 
   componentDidMount: function () {
-    // debugger;
     this.albumListener = AlbumStore.addListener(this.onChange);
     var filterObj = {
       genre: "all",
       sub_genre: "all",
       location: "all"
     };
-    // debugger;
     ApiUtil.fetchFilteredAlbums(filterObj);
   },
 
@@ -29,26 +27,12 @@ var AlbumIndex = React.createClass({
   },
 
   onChange: function () {
-    // debugger;
     this.setState({ albums: AlbumStore.all() });
   },
 
   render: function () {
     var albums;
     if (this.state.albums.length > 0) {
-      // if (this.state.albums.length <= 8) {
-      //   albums = this.state.albums.map(function (album, key) {
-      //     return (
-      //         <AlbumIndexItem key={album.id} album={album}/>
-      //     )
-      //   })
-      // } else {
-      //   albums = this.state.albums.slice(0, 8).map(function (album, key) {
-      //     return (
-      //         <AlbumIndexItem key={album.id} album={album}/>
-      //     )
-      //   })
-      // }
       albums = this.state.albums.map(function (album, key) {
         return (
             <AlbumIndexItem key={album.id} album={album}/>

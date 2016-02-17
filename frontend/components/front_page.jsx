@@ -22,26 +22,14 @@ var FrontPage = React.createClass({
       buttonImg: "assets/play.png",
       imgClass: "featured-play-img",
       buttonClass: "featured-play",
-      auth: false,
-      method: "",
-      loggedIn: false
     };
   },
 
   componentDidMount: function() {
-    this.scrollEvent.register('begin', function(to, element) {
-    });
+    this.scrollEvent.register('begin', function(to, element) {});
+    this.scrollEvent.register('end', function(to, element) {});
 
-    this.scrollEvent.register('end', function(to, element) {
-    });
-
-    var path = this.props.location.pathname;
-    if (path === "/discover") {
-      ApiActions.setDiscover(false);
-      var discover = document.getElementById("discover");
-      var height = discover.offsetTop;
-      window.scrollTo(0, height);
-    }
+    this.scrollToDiscover();
   },
 
   componentWillUnmount: function() {
@@ -49,43 +37,20 @@ var FrontPage = React.createClass({
     this.scrollEvent.remove('end');
   },
 
-  handleAuth: function (authMethod) {
-    this.setState({ auth: true, method: authMethod })
-  },
-
-  finishAuth: function () {
-    this.setState({ auth: false, loggedIn: true })
-  },
-
-  handleLogOut: function () {
-    ApiUtil.signOutUser();
-    this.setState({ loggedIn: false })
+  scrollToDiscover: function () {
+    var path = this.props.location.pathname;
+    if (path === "/discover") {
+      ApiActions.setNavigateDiscover(false);
+      var discover = document.getElementById("discover");
+      var height = discover.offsetTop;
+      window.scrollTo(0, height);
+    }
   },
 
   render: function () {
-    var modal = "";
-    if (this.state.auth) {
-      modal = <Auth method={this.state.method} callback={this.finishAuth}/>
-    };
-
-    var buttons;
-    if (this.state.loggedIn) {
-      buttons = <button onClick={this.handleLogOut}>Log Out</button>
-    } else {
-      buttons = (
-        <div>
-          <button onClick={this.handleAuth.bind(this, "Sign Up!")}>Sign Up</button>
-          <button onClick={this.handleAuth.bind(this, "Sign In!")}>Sign In</button>
-        </div>
-      )
-    };
-
-
-
     return (
       <div>
         <FeaturedAlbum/>
-        {modal}
         <Element id="discover" name="discover" className="discover">
           <DiscoverBar/>
           <FilterArea/>

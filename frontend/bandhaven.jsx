@@ -20,19 +20,20 @@ var App = React.createClass({
     var path = this.props.location.pathname;
     var segment = path.split('/')[2] || 'root';
 
-
     return (
       <Element name="top">
         <NavBar/>
-        <ReactCSS component='div' transitionName={segment === 'root' ? 'reversePageSwap' : 'pageSwap'}
+        <ReactCSS component='div'
+          transitionName={segment === 'root' ? 'reversePageSwap' : 'pageSwap'}
           transitionEnterTimeout={600} transitionLeaveTimeout={600}>
-            {React.cloneElement(this.props.children, { key: path, style: {top: window.pageYOffset + 60} })}
+            {
+              React.cloneElement(this.props.children,
+              { key: path, style: {top: window.pageYOffset + 60} })
+            }
         </ReactCSS>
-
       </Element>
     );
   },
-
 })
 
 var routes = (
